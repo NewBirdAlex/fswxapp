@@ -1,0 +1,34 @@
+/* pages/category/category.wxss */
+@import "../../template/productItem.wxss";
+
+.weui-navbar__item {
+      padding: 20rpx 0;
+}
+
+.weui-navbar {
+      position: fixed;
+      background: #fff;
+}
+
+.items-list .price .font26 {
+      margin-left: 20rpx;
+}
+
+.weui-tab_pannel {
+      padding-top: 110rpx;
+}
+
+movable-area {
+      width: 750rpx;
+      height: 90rpx;
+}
+
+movable-view {
+      height: 90rpx;
+      width: 1050rpx;
+}
+
+.weui-navbar__item {
+      float: left;
+      width: 150rpx;
+}

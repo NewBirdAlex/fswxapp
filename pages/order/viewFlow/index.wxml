@@ -1,0 +1,25 @@
+<view class="space"></view>
+<view class="code">订单编号：{{orderData.ordOrderId}}
+      <text class="code-word" wx:if="{{orderData.ordStatus==2}}">等待收货</text>
+      <text class="code-word" wx:if="{{orderData.ordStatus==3}}">交易完成</text>
+</view>
+<view class="space"></view>
+<view class="scroll-row">
+      <view class="scroll-view-item">包裹1</view>
+</view>
+<view class="all-contain">
+      <view class="big-contain">
+            <block wx:if="{{orderData.ordStatus==3}}">
+                  <view class="big-cir"></view>
+                  <view class="top-word ">感谢您在丰盛榜健康商城购物，欢迎您再次光临！</view>
+            </block>
+
+            <block wx:for="{{logisticsData}}">
+			<view class="big-cir" wx:if="{{index==0&&orderData.ordStatus==2}}"></view>
+                  <view class="small-cir"></view>
+                  <view class="top-word {{index == 0? 'top-des':''}}"><rich-text nodes="{{item.oddContent}}" bindtap="tap"></rich-text>
+                        <view class="time">{{item.oddTime}}</view>
+                  </view>
+            </block>
+      </view>
+</view>

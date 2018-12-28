@@ -1,0 +1,370 @@
+page {
+      background: #f5f6f5;
+}
+
+.btn-add-address {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      height: 110rpx;
+      width: 100%;
+      border-bottom: 2rpx solid #e5e5e5;
+      background: #fff;
+      line-height: 108rpx;
+      font-size: 34rpx;
+}
+
+.btn-add-address .arrow-right {
+      float: right;
+      margin-top: 8rpx;
+}
+
+.btn-add-address .icon-add {
+      width: 72rpx;
+      height: 72rpx;
+      float: left;
+      margin: 18rpx 20rpx 0 20rpx;
+}
+
+.user-address {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 20rpx;
+}
+
+.user-address-l {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+}
+
+.cart-list {
+      margin-top: 20rpx;
+      background-color: #fff;
+}
+
+.cart-list-item {
+      width: 750rpx;
+      height: 220rpx;
+      border-bottom: 1rpx solid #e5e5e5;
+      display: flex;
+      justify-content: space-between;
+}
+
+.cart-list-item-r {
+      width: 710rpx;
+      padding: 0 20rpx;
+      padding-left: 17;
+      display: flex;
+      justify-content: space-between;
+}
+
+.cart-list-item-r-l {
+      width: 140rpx;
+      height: 140rpx;
+      margin-top: 20rpx;
+      position: relative;
+}
+
+.cart-list-item-r-l image {
+      width: 100%;
+      height: 100%;
+      border: 1rpx solid #e5e5e5;
+}
+
+.sale_out {
+      position: absolute;
+      height: 35rpx;
+      width: 100%;
+      font-size: 20rpx;
+      text-align: center;
+      left: 0;
+      top: 52.5rpx;
+      background-color: rgba(204, 204, 204, 0.7);
+      color: #4a4a4a;
+}
+
+.cart-list-item-r-r {
+      width: 518rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+}
+
+.cart-list-item-r-r-n {
+      padding-top: 14rpx;
+}
+
+.cart-list-item-r-r-n text {
+      font-size: 26rpx;
+      color: #4a4a4a;
+      width: 418rpx;
+      padding-left: 5rpx;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+}
+
+.cart-list-item-r-r-p {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20rpx;
+      padding-right: 20rpx;
+}
+
+.cart-list-item-r-r-p-l {
+      font-size: 30rpx;
+      color: #f93473;
+}
+
+.cart-list-item-r-r-p-l text {
+      font-size: 18rpx;
+      color: #999;
+      text-decoration: line-through;
+      padding-left: 10rpx;
+}
+
+.cart-list-item-r-r-sku {
+      font-size: 22rpx;
+      color: #999;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+}
+
+.cart-list-item-r-r-p-n {
+      display: flex;
+      flex-direction: row;
+      font-size: 24rpx;
+      color: #4a4a4a;
+      padding-top: 10rpx;
+}
+
+.actions {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 98rpx;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1rpx solid rgba(204, 204, 204, 0.7);
+	z-index: 111;
+}
+
+.actions-l {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      width: 470rpx;
+      padding-right: 40rpx;
+}
+
+.actions-l .actions-l-sum {
+      font-size: 30rpx;
+      color: #4a4a4a;
+      padding-left: 20rpx;
+}
+
+.actions-l .actions-l-sum text {
+      font-size: 30rpx;
+      color: #f93473;
+}
+
+.actions-l .actions-l-dis {
+      font-size: 20rpx;
+      color: #9b9b9b;
+      padding-left: 12rpx;
+}
+
+.actions-r {
+      width: 280rpx;
+      height: 100%;
+}
+
+.actions-r button {
+      width: 100%;
+      height: 100%;
+      background-color: #f93473;
+      padding-left: 0;
+      padding-right: 0;
+      color: #fff;
+      line-height: 98rpx;
+      border-radius: unset;
+}
+
+.actions-r button::after {
+      border-radius: unset;
+      width: unset;
+}
+
+.options, .order-price {
+      width: 100%;
+}
+
+.options {
+	margin-top: 20rpx;
+}
+
+.options .weui-cell, .order-price .weui-cell {
+      color: #4a4a4a;
+      font-size: 28rpx;
+}
+
+.options .weui-cell__ft, .order-price .weui-cell__ft {
+      font-size: 24rpx;
+      color: #9b9b9b;
+}
+
+.options .weui-cell input {
+      font-size: 24rpx;
+}
+
+.options .weui-cell input::-webkit-input-placeholder {
+      color: #9b9b9b;
+}
+
+.order-price {
+      margin: 20rpx 0 118rpx;
+}
+
+.order-price .order-price-sum {
+      text-align: right;
+}
+
+.authorization {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 111;
+}
+
+.authorization_mask {
+	height: 100%;
+      width: 100%;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.2);
+	z-index: -1;
+}
+
+.authorization-input {
+      width: 675rpx;
+      border-radius: 20rpx;
+      background-color: #fff;
+      overflow: hidden;
+}
+
+.authorization-input .authorization-title {
+      background-color: #4bc6b1;
+      font-size: 32rpx;
+      color: #fff;
+      height: 77rpx;
+      line-height: 77rpx;
+      text-align: center;
+}
+
+.authorization-input .authorization-con .auth-con-name {
+      font-size: 24rpx;
+      color: #4a4a4a;
+      text-align: center;
+      margin: 20rpx 0 30rpx;
+}
+
+.authorization-input .authorization-con .auth-con-name image {
+      width: 28rpx;
+      height: 28rpx;
+      padding: 10rpx 30rpx;
+      vertical-align: bottom;
+}
+
+.authorization-input .authorization-con .auth-con-input {
+      font-size: 26rpx;
+      color: #4a4a4a;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 30rpx;
+}
+
+.authorization-input .authorization-con .auth-con-input input {
+      width: 592rpx;
+      height: 64rpx;
+      display: inline-block;
+      background-color: rgba(243, 243, 243, 1);
+      text-align: left;
+      border-radius: 10rpx;
+      margin: 0 20rpx 20rpx;
+      padding: 0 20rpx;
+}
+
+.authorization-input .authorization-con .auth-con-input input::-webkit-input-placeholder {
+      font-size: 26rpx;
+      color: #9b9b9b;
+      width: 632rpx;
+      height: 64rpx;
+}
+
+.authorization-input .authorization-btn {
+      height: 77rpx;
+      line-height: 77rpx;
+      width: 100%;
+      border-top: 1rpx solid #dcdcdc;
+      text-align: center;
+      font-size: 32rpx;
+      color: #4a4a4a;
+}
+
+.authorization-input .authorization--why-con {
+      padding: 50rpx 30rpx;
+}
+
+.authorization-input .authorization--why-con view {
+      font-size: 26rpx;
+      color: #4a4a4a;
+      margin-top: 10rpx;
+      display: flex;
+      justify-content: flex-start;
+}
+
+.authorization-input .authorization--why-con view label {
+      color: #4bc6b1;
+      padding-right: 10rpx;
+}
+
+.authorization-input .authorization--why-con view text {
+      display: inline;
+}
+
+.authorization-input .authorization--why-con .authorization--why-number {
+      color: #f93473;
+      padding-left: 28rpx;
+}
+
+.auth-con-list {
+      padding: 0 30rpx 40rpx;
+}
+
+.auth-con-list .auth-con-list-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 28rpx;
+      color: #4a4a4a;
+      margin: 20rpx 0;
+}
+
+.auth-con-list .auth-con-list-item .auth-con-list-item-l image {
+      width: 40rpx;
+      height: 40rpx;
+      vertical-align: middle;
+      padding-right: 20rpx;
+}

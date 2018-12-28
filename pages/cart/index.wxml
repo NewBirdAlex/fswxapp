@@ -1,0 +1,94 @@
+<import src="../../components/toast/toast.wxml" />
+<import src="../../components/recommend/recommend.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="container" wx:if="{{cartListData}}">
+      <view class="weui-toptips weui-toptips_warn" wx:if="{{showDeleteSuccTips}}">删除成功</view>
+      <view class="cart-list">
+            <view class='cart-wrapper' wx:for="{{cartListData}}" wx:for-item="sitem"  wx:for-index="sindex" wx:key="index" wx:if="{{cartListData.length!=0}}">
+                  <view class='cart_pro' wx:if="{{sitem.promotionType}}">
+				<view class='cart_pro_l'>
+					<text class='cart_pro_l_icon' wx:if="{{sitem.promotionType==1}}">满减</text>
+					<text class='cart_pro_l_icon' wx:if="{{sitem.promotionType==2}}">满折</text>
+					<text class='cart_pro_l_icon' wx:if="{{sitem.promotionType==3}}">包邮</text>
+					<text class='cart_pro_l_tips'>{{sitem.promotionTips}}</text>
+				</view>
+				<view class='cart_pro_r' bindtap='goHomePage'>
+					<text>去凑单>></text>
+				</view>
+			</view>
+                  <view class="cart-list-item"  wx:for="{{sitem.orderCartResps}}">
+                        <view class="cart-list-item-l">
+                              <image src="{{item.isSelect?'/assets/Check_selected@2x.png':'/assets/Check_normal@2x.png'}}" wx:if="{{sitem.promotionType&&item.skuShowNum!=0&&item.spuShelvesStatus==1}}" data-index="{{index}}"  data-sindex="{{sindex}}" data-bool="true" data-item="{{item}}" bindtap="chooseGoodsItem"></image>
+                              <image src="{{item.active?'/assets/Check_selected@2x.png':'/assets/Check_normal@2x.png'}}" wx:if="{{!sitem.promotionType&&item.skuShowNum!=0&&item.spuShelvesStatus==1}}" data-index="{{index}}"  data-sindex="{{sindex}}" data-bool="false" data-item="{{item}}" bindtap="chooseGoodsItem"></image>
+                        </view>
+                        <view class="cart-list-item-r">
+                              <view class="cart-list-item-r-l" data-spuid="{{item.skuSpuId}}" bindtap="goToDetail">
+                                    <image src="{{item.spuPic}}" style='opacity: {{item.skuShowNum==0||item.spuShelvesStatus==0?"0.3":"1"}}'></image>
+                                    <text class="sale_out" wx:if="{{item.spuShelvesStatus==1&&item.skuShowNum==0}}">已售罄</text>
+                                    <text class="sale_out" wx:if="{{item.spuShelvesStatus==0}}">已下架</text>
+                              </view>
+                              <view class="cart-list-item-r-r">
+                                    <view class="cart-list-item-r-r-n">
+                                          <text data-spuid="{{item.skuSpuId}}" bindtap="goToDetail">{{item.spuName}}</text>
+                                          <image src="/assets/ic_32_delete_normal.png" data-orcid="{{item.orcId}}" bindtap="deleteGoods"></image>
+                                    </view>
+                                    <view class="cart-list-item-r-r-p">
+                                          <view class="cart-list-item-r-r-p-l">
+                                                ￥{{item.skuPromotionPrice}}
+                                                <text wx:if="{{item.skuPromotionPrice!=item.skuSalePrice}}">￥{{item.skuSalePrice}}</text>
+                                                <!-- <text wx:if="{{item.skuPromotionPrice==item.skuSalePrice&&item.skuSalePrice!=item.skuMarketSalePrice&&item.skuMarketSalePrice!=0}}">￥{{item.skuMarketSalePrice}}</text> -->
+                                          </view>
+                                          <view class="cart-list-item-r-r-p-n">
+                                                <button plain="true" style="color:{{item.orcNumber<=1||(item.spuShelvesStatus==1&&item.skuShowNum==0)||item.spuShelvesStatus==0?'#e4e4e4':'#f93473'}}" data-index="{{index}}"  data-sindex="{{sindex}}" bindtap="skuNumSub">—</button>
+                                                <input value="{{item.orcNumber}}" bindfocus="orcNumberInput"></input>
+                                                <button plain="true" style="color:{{item.orcNumber>=item.skuShowNum||(item.spuShelvesStatus==1&&item.skuShowNum==0)||item.spuShelvesStatus==0?'#e4e4e4':'#f93473'}}" data-index="{{index}}"  data-sindex="{{sindex}}" bindtap="skuNumAdd">+</button>
+                                          </view>
+                                    </view>
+                              </view>
+                        </view>
+                  </view>
+            </view>
+            <view class="cart-empty" wx:if="{{cartListData.length==0}}">
+                  <view class="cart-empty-icon">
+                        <image src="/assets/shopping_cart_normal@2x.png"></image>
+                  </view>
+                  <view class="cart-empty-text">
+                        <text>您的购物车什么都没有喔~</text>
+                  </view>
+                  <view class="cart-empty-text" style="margin-bottom: 60rpx;">
+                        <text>赶紧去加点什么吧</text>
+                  </view>
+                  <view class="cart-empty-btn">
+                        <button formType="submit" bindtap="goToHome">去逛逛</button>
+                  </view>
+            </view>
+      </view>
+      <!-- 大家都在看  -->
+      <view class="recommend-wrapper" style="margin-bottom:54px">
+            <template is="recommend" data="{{recommendData}}" />
+            <view class="clear"></view>
+            <view class="weui-loadmore" wx:if="{{isLoading}}">
+                  <view class="weui-loading"></view>
+                  <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view class="weui-loadmore weui-loadmore_line" wx:if="{{noMoreData&&recommendData.length==0}}">
+                  <view class="weui-loadmore__tips weui-loadmore__tips_in-line gray">没有更多</view>
+            </view>
+      </view>
+      <view class="actions" wx:if="{{cartListData.length!=0}}">
+            <view class="actions-l">
+                  <view class="actions-l-all" bindtap="chooseAllGoodsItem">
+                        <image src="{{chooseAll?'/assets/Check_selected@2x.png':'/assets/Check_normal@2x.png'}}"></image>
+                  </view>
+                  <view class="actions-l-sum">合计：
+                        <text>￥{{totalPrice}}</text>
+                  </view>
+                  <view class="actions-l-dis">立减￥
+                        <text>{{discountPrice}}</text>
+                  </view>
+            </view>
+            <view class="actions-r">
+                  <button formType="submit" bindtap="fillOrder">结算</button>
+            </view>
+      </view>
+</view>

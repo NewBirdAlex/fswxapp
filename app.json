@@ -1,0 +1,79 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/afterSales/index",
+    
+    "pages/goodsDetail/index",
+    "pages/goodsDetail/goodsComment/index",
+    "pages/cart/index",
+    "pages/fillOrder/index",
+    "pages/fillOrder/coupon/index",
+    "pages/addressList/index",
+    "pages/realName/index",
+    "pages/realName/addRealName/index",
+    "pages/user/index",
+    "pages/order/orderList/index",
+    "pages/order/orderDetail/index",
+    "pages/order/getGoods/index",
+    "pages/order/goodsEvaluation/index",
+    "pages/order/viewEvaluation/index",
+    "pages/order/viewFlow/index",
+    "pages/order/coupon/index",
+    "pages/category/category",
+    "pages/search/index",
+    "pages/order/successEvaluation/index",
+    "pages/giftCard/index",
+    "pages/giftCard/addCard/addCard",
+    
+    "pages/afterSales/detail/index",
+    "pages/afterSales/refundInfor/index",
+    "pages/afterSales/apply/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#04C5B4 ",
+    "borderStyle": "#e5e5e5",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/ic_54_home_normal.png",
+        "selectedIconPath": "assets/ic_54_home_secected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "iconPath": "assets/ic_54_shoppingcar_normal.png",
+        "selectedIconPath": "assets/ic_54_shoppingcar_secected.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "assets/ic_54_me_normal.png",
+        "selectedIconPath": "assets/ic_54_me_secected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "subPackages": [
+    {
+      "root": "subPackages/songzan",
+      "pages": [
+        "pages/index/index"
+      ]
+    }
+  ]
+}

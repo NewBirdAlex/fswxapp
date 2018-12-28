@@ -1,0 +1,76 @@
+<block wx:for="{{addressAll}}" wx:for-index="key" wx:for-item="item">
+      <view class="address-top">
+            <view class="content">
+                  <view>
+                        <text class="recevier">{{item.madReceiver}}</text>
+                        <text class="mobile">{{item.madMobile}}</text>
+                  </view>
+                  <view class="detail">{{item.madProvince}} {{item.madCity}} {{item.madTown}} {{item.madAddressDetail}}</view>
+            </view>
+            <view class="top-user" data-item="{{item}}" bindtap="useAddress"  wx:if="{{useBtnShow}}">使用</view>
+      </view>
+      <view class="address-bottom">
+            <view class="edit-all" bindtap='sureDefault' data-item="{{item}}" wx:if="{{item.madDefault==0}}">
+                  <view class="circle"></view>
+                  <view class="default">设为默认</view>
+            </view>
+            <view class="edit-all" bindtap='sureDefault' data-item="{{item}}" wx:if="{{item.madDefault==1}}">
+                  <view class="circle out-border">
+                        <image class="right-img" src="/assets/ic_46_checked@3x.png"></image>
+                  </view>
+                  <view class="default ">已设为默认</view>
+            </view>
+            <view class="edit-all">
+                  <view class="edit-all" bindtap="getInfo" data-item="{{item}}" id="{{key}}">
+                        <image class="write" src="/assets/ic_edit_normal.png"></image>
+                        <view class="edit">编辑</view>
+                  </view>
+                  <view class="edit-all delete" bindtap='deleteAddress' id="{{key}}">
+                        <image class="write" src="/assets/ic_delete_normal.png"></image>
+                        <view class="edit">删除</view>
+                  </view>
+            </view>
+      </view>
+</block>
+
+<view class="white-space"></view>
+<view class="add-all">
+      <view class="address-add grey" bindtap='util' id="1">手动添加</view>
+      <view class="address-add green" bindtap='util' id="2">微信添加</view>
+</view>
+
+<view class="shadow-box" wx:if="{{showModalStatus}}">
+      <view class="alert-content">
+            <view class="close" id="1" bindtap="powerDrawer">×</view>
+            <view class="add-title" wx:if="{{title==0}}">添加收货新地址</view>
+            <view class="add-title" wx:if="{{title==1}}">编辑收货地址</view>
+            <view class="add-item">
+                  <view class="add-top">联系人</view>
+                  <view>
+                        <input placeholder="姓名" bindinput="bindKeyName" maxlength="11" class="add-detail" value="{{name}}" placeholder-class="add-word" auto-focus/>
+                  </view>
+            </view>
+            <view class="add-item">
+                  <view class="add-top">手机号码</view>
+                  <view>
+                        <input placeholder="电话" bindinput="bindKeyTel" value="{{tel}}" maxlength="11" class="add-detail" placeholder-class="add-word" auto-focus/>
+                  </view>
+            </view>
+            <view class="add-item">
+                  <view class="add-top">选择地区</view>
+                  <picker class="picker add-detail" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                        <view>
+                              {{lastArray[0]}}，{{lastArray[1]}}，{{lastArray[2]}}
+                        </view>
+                  </picker>
+            </view>
+            <view class="add-item">
+                  <view class="add-top">详细地址</view>
+                  <view>
+                        <input placeholder-class="place-space" placeholder="详细街道地址" bindinput="bindKeyDetail" value="{{detail}}" class="add-detail" placeholder-class="add-word" auto-focus/>
+                  </view>
+            </view>
+            <view class="btn" id="0" bindtap="powerDrawer">保存</view>
+            <view class="bot-bottom"></view>
+      </view>
+</view>

@@ -1,0 +1,333 @@
+<import src="../../components/toast/toast.wxml" />
+<import src="../../components/recommend/recommend.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showSkuNumTips}}">已为你调整数量</view>
+
+<view class="container" wx:if="{{goodsData}}">
+      <view class="swiper-wrapper">
+            <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" bindchange="swiperChange">
+                  <block wx:for="{{goodsData.bannerList}}" wx:key="{{index}}">
+                        <swiper-item>
+                              <image src="{{item.psrResourceUrl}}" class="slide-image" data-img="{{item.psrResourceUrl}}" bindtap="previewImage" />
+                        </swiper-item>
+                  </block>
+            </swiper>
+            <view class="swiper-mask" wx:if="{{goodsData&&goodsData.spuShelvesStatus!=0&&goodsData.totalShowNum==0}}">
+                  <image src="/assets/sale_out.png"></image>
+            </view>
+      </view>
+      <view class="promotion" wx:if="{{goodsData.promotionResp&&goodsData.spuShelvesStatus==1&&goodsData.totalShowNum!=0}}">
+            <view class="promotion-l">
+                  <image src="/assets/time_normal@2x.png" class="promotion-l-l"></image>
+                  <image src="/assets/buy_normal@2x.png" class="promotion-l-r"></image>
+            </view>
+            <view class="promotion-r">
+                  <view class="promotion-r-state">距结束还剩</view>
+                  <view class="promotion-r-time" wx:if="{{promotionEndTime}}">
+                        <label>{{promotionEndTime.days}}天</label>
+                        <text>{{promotionEndTime.hours}}</text>:
+                        <text>{{promotionEndTime.min}}</text>:
+                        <text>{{promotionEndTime.sec}}</text>
+                  </view>
+            </view>
+      </view>
+      <view class="goods-msg">
+            <view class="goods-name">{{goodsData.spuName}}</view>
+            <view class="goods-state">{{goodsData.spuAd}}</view>
+            <view class="goods-price" wx:if="{{goodsData.promotionResp}}">￥{{goodsData.spuPromotionPrice}}
+                  <text>￥{{goodsData.minSalePrice}}</text>
+            </view>
+            <view class="goods-price" wx:else>￥{{goodsData.minSalePrice==goodsData.maxSalePrice?goodsData.minSalePrice:goodsData.minSalePrice+"~"+goodsData.maxSalePrice}}
+                  <text wx:if="{{goodsData.spuMarketMinPrice!=0&&goodsData.spuMarketMinPrice>goodsData.minSalePrice}}">￥{{goodsData.spuMarketMinPrice}}</text>
+            </view>
+            <view class="goods-extra">
+                  <text>运费：{{goodsData.spuCarriage}}</text>
+                  <text>销量：{{goodsData.totalSaleNum+goodsData.totalMakeSaleNum}}</text>
+                  <text>剩余：{{goodsData.totalShowNum}}</text>
+            </view>
+      </view>
+      <view class="goods-reason" wx:if="{{goodsData.reasonsList.length!=0}}">
+            <view class="goods-reason-l fl">
+                  <image src="/assets/List.png"></image>
+                  <text class="mt20">上榜</text>
+                  <text>理由</text>
+            </view>
+            <view class="goods-reason-r fr">
+                  <label wx:for="{{goodsData.reasonsList}}" wx:key="{{index}}">·
+                        <text>{{item.pcrReason}}</text>
+                  </label>
+            </view>
+      </view>
+      <view class="goods-expert" wx:if="{{goodsData.spuExpertOption}}">
+            <view>专家观点：
+                  <text>{{goodsData.spuExpertOption}}</text>
+            </view>
+      </view>
+
+      <!-- 促销  -->
+      <!-- 1-满减  2-满折  3-包邮 -->
+      <view class='promotion_ac' wx:if="{{goodsData.promotionConfigResps&&goodsData.promotionConfigResps.length!=0}}">
+            <view class='promotion_ac_wrapper'>
+                  <view class='promotion_l'>促销：</view>
+                  <view class='promotion_r'>
+                              <view class='promotion_r_item' wx:for="{{goodsData.promotionConfigResps}}" wx:if="{{item.promotionType==1}}">
+                                    <block wx:if="{{item.thresholdType==1}}">
+                                          <text class='promotion_r_item_icon'>满减</text>
+                                          <text class='promotion_r_item_text'>满{{item.thresholdValue}}元减{{item.promotionReduce}}元</text>
+                                    </block>
+                                    <block wx:if="{{item.thresholdType==2}}">
+                                          <text class='promotion_r_item_icon'>满减</text>
+                                          <text class='promotion_r_item_text'>满{{item.thresholdValue}}件减{{item.promotionReduce}}元</text>
+                                    </block>
+                              </view>
+                              <view class='promotion_r_item' wx:for="{{goodsData.promotionConfigResps}}" wx:if="{{item.promotionType==2}}">
+                                    <block wx:if="{{item.thresholdType==1}}">
+                                          <text class='promotion_r_item_icon'>满折</text>
+                                          <text class='promotion_r_item_text'>满{{item.thresholdValue}}元打{{item.promotionDiscount*10}}折</text>
+                                    </block>
+                                    <block wx:if="{{item.thresholdType==2}}">
+                                          <text class='promotion_r_item_icon'>满折</text>
+                                          <text class='promotion_r_item_text'>满{{item.thresholdValue}}件打{{item.promotionDiscount*10}}折</text>
+                                    </block>
+                              </view>
+                              <view class='promotion_r_item' wx:for="{{goodsData.promotionConfigResps}}" wx:if="{{item.promotionType==3}}">
+                                    <text class='promotion_r_item_icon'>包邮</text>
+                                    <text class='promotion_r_item_text'>满{{item.thresholdValue}}元包邮</text>
+                              </view>
+                  </view>
+            </view>
+      </view>
+
+      <view class="goods-coupon weui-cells weui-cells_after-title" wx:if="{{hasCardIdCouponData.length!=0}}">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="toggleCouponDialog">
+                  <view class="weui-cell__bd">
+                        <text>领券：</text>
+                        <label wx:for="{{hasCardIdCouponData}}" wx:key="{{index}}" wx:if="{{index<3}}">
+                              <image src="/assets/coupons_bg.png"></image>
+                              <text>{{item.mkcPrice}}元优惠券</text>
+                        </label>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+      </view>
+      <!-- <view class="goods-coupon weui-cells weui-cells_after-title" wx:if="{{couponData}}">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="toggleCouponDialog">
+                  <view class="weui-cell__bd">
+                        <text>领券：</text>
+                        <label wx:for="{{couponData}}" wx:key="{{index}}" wx:if="{{index<3}}">
+                              <image src="/assets/coupons_bg.png"></image>
+                              <text>{{item.mkcPrice}}元优惠券</text>
+                        </label>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+      </view>  -->
+      <view class="goods-spec weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="toggleSpecDialog">
+                  <view class="weui-cell__bd">
+                        <text>规格数量选择：{{hasJoinCartState}}</text>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+      </view>
+
+      <view class="goods-pi weui-cells weui-cells_after-title" wx:if="{{goodsData.piList&&goodsData.piList.length!=0}}">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="togglePiDialog">
+                  <view class="weui-cell__bd">
+                        <label wx:for="{{goodsData.piList}}" wx:key="{{index}}">
+                              <image src="/assets/right_normal@2x.png"></image>
+                              <text>{{item.piInsurance}} </text>
+                        </label>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+      </view>
+      <!--套餐商品  -->
+      <view class='pTitle'>
+        <view>优惠套餐</view>  
+      </view>
+      <view class="divider" wx:if="{{commentData.length!=0}}">
+            <image src="/assets/divider.png" class="divider-line"></image>
+            <image src="/assets/news_normal@2x.png"></image>
+            <text>评价</text>
+            <image src="/assets/divider.png" class="divider-line"></image>
+      </view>
+      <view class="comments" wx:if="{{commentData.length!=0}}">
+            <view class="comments-head">
+                  <view class="weui-cells weui-cells_after-title">
+                        <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="moreComment">
+                              <view class="weui-cell__bd">用户评论（{{commentPageData.totalSize}}）</view>
+                              <view class="weui-cell__ft weui-cell__ft_in-access">查看全部</view>
+                        </view>
+                  </view>
+            </view>
+            <view class="comments-con">
+                  <view class="comments-con-l">
+                        <image src="{{commentData[0].orsMemberImg?commentData[0].orsMemberImg:'/assets/default.png'}}"></image>
+                  </view>
+                  <view class="comments-con-r">
+                        <view class="comments-con-r-user">
+                              <view class="comments-con-r-user-name">
+                                    <text>{{commentData[0].oicMemberNickname}}</text>
+                                    <image src="/assets/stae_selected@2x.png" wx:for="{{commentData[0].oicStarNum}}" wx:key="{{index}}"></image>
+                                    <image src="/assets/star_normal@2x.png" wx:for="{{5-commentData[0].oicStarNum}}" wx:key="{{index}}"></image>
+                              </view>
+                              <view class="comments-con-r-user-date">
+                                    <text>{{commentData[0].oicCreatedTime}}</text>
+                              </view>
+                        </view>
+                        <view class="comments-con-r-title">{{commentData[0].oicComment}}</view>
+                        <view class="comments-con-r-pic">
+                              <image src="{{item}}" wx:for="{{commentData[0].oicImg}}" wx:key="{{index}}"></image>
+                        </view>
+                        <view class="comments-con-r-spec">{{commentData[0].oicProductName}}</view>
+                  </view>
+            </view>
+      </view>
+      <view class="divider" wx-if="{{goodsData.detailsList!=''}}">
+            <image src="/assets/divider.png" class="divider-line"></image>
+            <image src="/assets/intro_icon.png"></image>
+            <text>商品详情</text>
+            <image src="/assets/divider.png" class="divider-line"></image>
+      </view>
+      <view class="goods-intro" wx-if="{{goodsData.detailsList!=''}}">
+            <!-- <view class="goods-intro-video">
+			<view class="goods-intro-video-title"><text>宝贝视频</text></view>	
+			<view class="goods-intro-video-con"> <video src="http://img1.fshtop.com/1498011652151.mp4" controls></video></view>	
+		</view> -->
+            <view class="goods-intro-con">
+                  <image src="{{item.psrResourceUrl}}" mode="widthFix" wx:for="{{goodsData.detailsList}}" wx:key="{{index}}"></image>
+            </view>
+      </view>
+
+      <!-- 大家都在看  -->
+      <view class="recommend-wrapper" style="margin-bottom:54px">
+            <template is="recommend" data="{{recommendData}}" />
+            <view class="clear"></view>
+            <view class="weui-loadmore" wx:if="{{isLoading}}">
+                  <view class="weui-loading"></view>
+                  <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view class="weui-loadmore weui-loadmore_line" wx:if="{{noMoreData&&recommendData.length!=0}}">
+                  <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多</view>
+            </view>
+      </view>
+
+      <view class="goods-menu">
+            <view class="goods-line" wx:if="{{goodsData&&goodsData.spuShelvesStatus!=0&&goodsData.totalShowNum==0}}">
+                  <text>{{sale_out_menu_state}}</text>
+            </view>
+            <view class="goods-line" wx:if="{{goodsData&&goodsData.spuShelvesStatus==0}}">
+                  <text>{{sale_line_menu_state}}</text>
+            </view>
+            <view class="actions">
+                  <view class="actions-l">
+                        <view class="action-l-cus">
+                              <button open-type="contact" formType="submit">
+                                    <image src="/assets/ic_54_kefu@3x.png" mode="widthFix"></image>
+                                    <label>客服</label>
+                              </button>
+                        </view>
+                        <view class="action-l-col">
+                              <button formType="submit" bindtap="collectGoods">
+                                    <image src="{{isCollected?'/assets/ic_54_selected.png':'/assets/ic_54_collect@3x.png'}}" mode="widthFix"></image>
+                                    <label>收藏</label>
+                              </button>
+                        </view>
+                        <view class="action-l-cart">
+                              <button formType="submit" bindtap="goToCart">
+                                    <image src="/assets/ic_54_shoppingcart@3x.png" mode="widthFix"></image>
+                                    <label>购物车</label>
+                                    <view class="weui-badge">{{cartBadge}}</view>
+                              </button>
+                        </view>
+                  </view>
+                  <view class="actions-r">
+                        <button class="actions-r-join" formType="submit" wx:if="{{goodsData&&goodsData.spuShelvesStatus==1&&goodsData.totalShowNum!=0}}" bindtap="toggleSpecDialog">加入购物车</button>
+                        <button class="actions-r-buy" formType="submit" wx:if="{{goodsData&&goodsData.spuShelvesStatus==1&&goodsData.totalShowNum!=0}}" bindtap="toggleSpecDialog">立即购买</button>
+                        <button class="actions-r-other" formType="submit" bindtap="goToHome" wx:if="{{goodsData&&goodsData.spuShelvesStatus==0||goodsData.totalShowNum==0}}">查看商城其它商品</button>
+                  </view>
+            </view>
+      </view>
+      <!-- <view class="popup-dialog {{ showCouponDialog ? 'popup-dialog--show' : '' }}">
+            <view class="popup-dialog__mask" bindtap="toggleCouponDialog" />
+            <view class="popup-dialog__container">
+                  <view class="popup-dialog-title">
+                        <text>优惠券</text>
+                        <image src='/assets/close_normal@2x.png' bindtap="toggleCouponDialog"></image>
+                  </view>
+                  <view class="popup-dialog-con">
+                        <view class="popup-dialog-con-item" wx:for="{{couponData}}" wx:key="{{index}}">
+                              <view class="popup-dialog-con-item-l">
+                                    <image src="/assets/coupon2_normal@2x.png"></image>
+                                    <view class="popup-dialog-con-item-l-w">
+                                          <view class="popup-dialog-con-item-l-w-p">￥
+                                                <text>{{item.mkcPrice}}</text>
+                                          </view>
+                                          <view class="popup-dialog-con-item-l-w-m">满{{item.mkcUsedCondition}}元可用</view>
+                                    </view>
+                              </view>
+                              <view class="popup-dialog-con-item-r">
+                                    <view class="popup-dialog-con-item-r-t">{{item.mkcUsedType==0?'适用于当前商品':'适用于全店商品'}}</view>
+                                    <view class="popup-dialog-con-item-r-date">
+                                          <view>有效期：{{item.mktShowStart}}至{{item.mktShowEnd}}</view>
+                                          <button formType="submit" data-item="{{item}}" bindtap="revieveCoupon" data-index="{{index}}" wx:if="{{item.active}}">点击领取</button>
+                                          <button formType="submit" wx:else class="popup-dialog-con-item-r-date-h">点击领取</button>
+                                    </view>
+                              </view>
+                        </view>
+                  </view>
+            </view>
+      </view> -->
+      <view class="popup-dialog {{ showSpecDialog ? 'popup-dialog--show' : '' }}">
+            <view class="popup-dialog__mask" bindtap="toggleSpecDialog" />
+            <view class="popup-dialog_spec_container">
+                  <view class="popup-dialog-con" style="margin: 20rpx 0 0rpx;">
+                        <view class="goods-sku-head">
+                              <view class="goods-sku-head-pic">
+                                    <image src="{{goodsData.spuPic}}"></image>
+                              </view>
+                              <view class="goods-sku-head-pri">
+                                    <text class="goods-sku-head-pri-f" wx-if="{{goodsData.promotionResp}}">价格：￥{{skuItemData.proSkuTruePrice}}</text>
+                                    <text class="goods-sku-head-pri-f" wx:else>价格：￥{{skuItemData.skuSalePrice}}</text>
+                                    <text class="goods-sku-head-pri-s">已选：“{{skuChosenSpec}}”  “{{skuChosenNumber}}件”</text>
+                              </view>
+                              <image src='/assets/close_normal@2x.png' bindtap="toggleSpecDialog" class="goods-sku-close"></image>
+                        </view>
+                        <view class="goods-sku-spec">
+                              <view class="goods-sku-spec-title">规格</view>
+                              <scroll-view scroll-y class="goods-sku-spec-radio">
+                                    <view class="{{item.active?'goods-sku-spec-radio-c':'goods-sku-spec-radio-w'}}" style="opacity:{{item.skuShowNum==0?0.3:1}}" data-index="{{index}}" wx:for="{{skuListData}}" bindtap="skuItemClick" wx:key="{{index}}">{{item.skuAtrr==""?item.skuName:item.skuAtrr}}</view>
+                              </scroll-view>
+                        </view>
+                        <view class="goods-sku-number">
+                              <view class="goods-sku-number-l">
+                                    <text class="goods-sku-number-l-n">数量</text>
+                                    <text class="goods-sku-number-l-l">剩余{{skuShowNum}}件</text>
+                              </view>
+                              <view class="goods-sku-number-r">
+                                    <button plain="true" style="color:{{skuChosenNumber<=1?'#e4e4e4':'#f93473'}}" bindtap="skuNumSub">—</button>
+                                    <input value="{{skuChosenNumber}}" bindfocus="orcNumberInput"></input>
+                                    <button plain="true" style="color:{{skuChosenNumber>=skuShowNum?'#e4e4e4':'#f93473'}}" bindtap="skuNumAdd">+</button>
+                              </view>
+                        </view>
+                        <view class="goods-sku-actions">
+                              <button formType="submit" class="goods-sku-actions-join fl" bindtap="joinCart" wx:if="{{goodsData&&goodsData.spuShelvesStatus==1&&goodsData.totalShowNum!=0}}">加入购物车</button>
+                              <button formType="submit" class="goods-sku-actions-buy fr" bindtap="fillOrder" wx:if="{{goodsData&&goodsData.spuShelvesStatus==1&&goodsData.totalShowNum!=0}}">立即购买</button>
+                              <button formType="submit" class="goods-sku-actions-other" bindtap="goToHome" wx:if="{{goodsData&&goodsData.spuShelvesStatus==0||goodsData.totalShowNum==0}}">查看商城其它商品</button>
+                        </view>
+                  </view>
+            </view>
+      </view>
+      <view class="popup-dialog {{ showPiDialog ? 'popup-dialog-pi--show' : '' }}">
+            <view class="popup-dialog__mask" bindtap="togglePiDialog" />
+            <view class="popup-dialog__container" style="height:auto;">
+                  <view class="dialog-con dialog--Pi-con">
+                        <view class="dialog-con-item" wx:for="{{goodsData.piList}}" wx:key="{{index}}">
+                              <label>{{item.piInsurance}}</label>
+                              <text>{{item.piDesc}}</text>
+                        </view>
+                  </view>
+            </view>
+      </view>
+</view>

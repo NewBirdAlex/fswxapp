@@ -1,0 +1,22 @@
+<template name="afterSalesItem">
+<view class='good' data-ordorderid='{{ordOrderId}}' 
+data-refundordid='{{refundOrdId}}' 
+data-skuid='{{skuId}}' data-orstno='{{orstNo}}' bindtap="{{isList&&status!=0?'refundDetail':''}}">
+  <image class='good-image' src='{{spuPic}}'></image>
+  <view class="good-right">
+    <view class="good-name">{{spuName}}</view>
+    <view class="good-info">
+      {{skuName}}
+      <text class="good-num">数量：{{skuNum}} </text>
+    </view>
+    <view wx:if='{{isList}}' style='float: right;'>
+      <view class='good-operation'> 
+        <view wx:if='{{status==0}}' bindtap='refundApply'>申请售后</view>
+        <view wx:if='{{status==1}}'>等待商家审核</view>
+      </view>
+      <view wx:if='{{status!=0&&status!=1}}' class='good-operation-status'>商品已超过售后期</view>
+    </view>
+
+  </view>
+</view>
+</template>

@@ -1,0 +1,38 @@
+<import src="../../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="container">
+	<view class="identity_msg_title">身份信息（必填）</view>
+	<view class="identity_input">
+		<input class="identity_input_name" placeholder="真实姓名" placeholder-style="color:#b2b2b2;" bindinput="bindName"></input>
+		<input class="identity_input_id" placeholder="您的身份证号码（将加密处理）" placeholder-style="color:#b2b2b2;" maxlength="18" type="idcard" bindinput="bindIdentity"></input>
+	</view>
+	 <view class="identity_msg_title">身份证正反面照片（选填）</view>
+	<view class="identity_pic">
+		<view class="identity_pic_upload">
+			<image mode="aspectFit" src="{{image_pos==''?'/assets/ic_uploadpic.png':image_pos}}" class="identity_pic_upload_pos" data-index="1" bindtap="onAddPic">
+				<view style="width:{{progress_pos=='已上传'?'100%':progress_pos+'%'}}" wx:if="{{pos_bool}}"></view>
+				<text wx:if="{{pos_bool}}">{{progress_pos=="已上传"?progress_pos:progress_pos+"%"}}</text>
+			</image>
+			<image mode="aspectFit" src="{{image_opp==''?'/assets/ic_uploadpic.png':image_opp}}" class="identity_pic_upload_opp" data-index="2" bindtap="onAddPic">
+				<view style="width:{{progress_opp=='已上传'?'100%':progress_opp+'%'}}" wx:if="{{opp_bool}}"></view>
+				<text wx:if="{{opp_bool}}">{{progress_opp=="已上传"?progress_opp:progress_opp+"%"}}</text>
+			</image>
+		</view>
+		<view  class="identity_pic_demo">
+			<view>
+				<text>示例</text>
+				<image src="/assets/pic_idcard01.png"></image>
+			</view>
+			<view>
+				<text>示例</text>
+				<image src="/assets/pic_idcard02.png"></image>
+			</view>
+		</view>
+	</view> 
+	<view class="identity_state">
+		<text class="identity_state_title">为什么要实名认证？</text>
+		<text class="identity_state_label">根据海关规定，购买跨境商品需要办理清关手续，请您配合进行实名认证，以确保您购买的商品顺利通过海关检查。（丰盛榜承诺所传身份证明只用于办理跨境商品的清关手续，不作他途使用，其他任何人均无法查看）</text>
+		<text class="identity_state_label"> 实名认证的规则：购买跨境商品需填写丰盛榜账号注册人的真实姓名及身份证号码，部分商品下单时需提供收货人的实名信息（含身份证照片），具体请以下单时的提示为准。</text>
+	</view>
+	<button class="add-real" bindtap="addRealName">保存</button>
+</view>

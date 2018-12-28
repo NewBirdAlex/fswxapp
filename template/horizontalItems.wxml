@@ -1,0 +1,15 @@
+<import src="../template/productItem.wxml" />
+<import src="../template/productMore.wxml" />
+<template name="horizontalItems">
+<scroll-view class="product-scrllo-view" scroll-x="true">
+  <view class="list-item" wx:for="{{data}}" wx:for-index="index" wx:key="index">
+    <template is="productItem" data="{{...item}}" />
+  </view>
+  <view wx:if="{{data.length>=9}}" class="list-item list-item-last">
+    <template is="productMore" data="{{...fence}}" />
+  </view>
+  <view wx:else class="list-item-last">
+
+  </view>
+</scroll-view>
+</template>

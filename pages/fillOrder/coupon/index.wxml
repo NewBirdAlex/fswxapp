@@ -1,0 +1,51 @@
+<import src="../../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="tab">
+      <view id="0" bindtap='goChoosed' class="{{sureChoosed==0?'choosed':'tab-one'}}">可用优惠券（{{fillOrderCouponData.usableList?fillOrderCouponData.usableList.length:"0"}}）</view>
+      <view id="1" bindtap='goChoosed' class="{{sureChoosed==1?'choosed':'tab-one'}}">不可用优惠券（{{fillOrderCouponData.disableList?fillOrderCouponData.disableList.length:"0"}}）</view>
+</view>
+<!-- 可用优惠券usableList -->
+<block wx:if="{{sureChoosed==0}}">
+      <view class="contain" wx:for="{{fillOrderCouponData.usableList}}" wx:if="{{fillOrderCouponData.usableList&&fillOrderCouponData.usableList.length!=0}}" wx:key="index" data-index="{{index}}" bindtap="chooseCoupon">
+            <view class="coup-img">
+                  <view class="yuan">
+                        <view>
+                              <text class="icon">￥</text>{{item.mkcPrice}}</view>
+                        <view class="over">满{{item.mkcUsedCondition}}可用</view>
+                  </view>
+                  <image class="coup-draw" src="/assets/coupon2_normal@2x.png"></image>
+            </view>
+            <view class="coup-center">
+                  <view class="top-word">{{item.mkcUsedType==0?'适用于指定商品':'适用于全店商品'}}</view>
+                  <view class="top-time">有效期：{{item.mktStart}}至{{item.mktEnd}} </view>
+            </view>
+            <view class="coup-right">
+                  <image src="{{item.active?'/assets/Check_selected@2x.png':'/assets/Check_normal@2x.png'}}"></image>
+            </view>
+      </view>
+	<view class="no_data"  wx:if="{{!fillOrderCouponData.usableList||fillOrderCouponData.usableList.length==0}}">
+		<image src="/assets/nocoupon_normal@2x.png"></image>
+		<text>暂无可用的优惠券</text>
+	</view>
+</block>
+<!-- 不可用优惠券disableList -->
+<block wx:if="{{sureChoosed==1}}">
+      <view class="contain" wx:for="{{fillOrderCouponData.disableList}}" wx:if="{{fillOrderCouponData.disableList&&fillOrderCouponData.disableList.length!=0}}" wx:key="index">
+            <view class="coup-img">
+			<view class="yuan">
+                        <view>
+                              <text class="icon">￥</text>{{item.mkcPrice}}</view>
+                        <view class="over">满{{item.mkcUsedCondition}}可用</view>
+                  </view>
+                  <image class="coup-draw" src="/assets/grey.jpg"></image>
+            </view>
+            <view class="coup-center">
+                  <view class="top-word">{{item.mkcUsedType==0?'适用于指定商品':'适用于全店商品'}}</view>
+                  <view class="top-time">有效期：{{item.mktStart}}至{{item.mktEnd}} </view>
+            </view>
+      </view>
+	<view class="no_data" wx:if="{{!fillOrderCouponData.disableList||fillOrderCouponData.disableList.length==0}}">
+		<image src="/assets/nocoupon_normal@2x.png"></image>
+		<text>暂无可用的优惠券</text>
+	</view>
+</block>

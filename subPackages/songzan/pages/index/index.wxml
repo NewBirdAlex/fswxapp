@@ -1,0 +1,176 @@
+<view class="container">
+
+    <view id='first_page'>
+        <image class="bg" src="./images/bg_one@2x.png" mode="widthFix"></image>
+        <image class="arrow_btn" src="./images/ic_puon@2x.png" mode="aspectFit"></image>
+    </view>
+
+    <view class="hotel_list_block">
+        <view class="item_block">
+            <navigator url="{{'/pages/goodsDetail/index?spuId=981066745169207773'}}">
+                <image class="item_img" src="./images/bg_two@2x.png" mode="widthFix"></image>
+            </navigator>
+            <view class="item_info_block">
+                <view class="left">
+                    <text>住2晚丽江林卡＋2晚香格里拉
+                            驻店旅行管家服务
+                            酒店专车
+                            每日三餐</text>
+                </view>
+                <view class="right">
+                    <text>探寻顾彼德故居
+                            纳西人家生活体验
+                            虎跳峡
+                            松赞林寺
+                            山谷徒步体验</text>
+                </view>
+            </view>
+        </view>
+        <view class="item_block">
+            <navigator url="{{'/pages/goodsDetail/index?spuId=981066745169207846'}}">
+                <image class="item_img" src="./images/bg_three@2x.png" mode="widthFix"></image>
+            </navigator>
+            <view class="item_info_block">
+                <view class="left">
+                    <text>住8晚松赞精品酒店
+                        丽江＋塔城＋茨中＋梅里＋香格里拉
+                        诠释真正的藏地世界，感受独特滇西北文化
+                        专业周到的管家服务，吃住游行一站全包
+                        让旅行更自由、舒适、私享</text>
+                </view>
+            </view>
+        </view>
+        <view class="item_block">
+            <navigator url="{{'/pages/goodsDetail/index?spuId=981066745169207873'}}">
+                <image class="item_img" src="./images/bg_four@2x.png" mode="widthFix"></image>
+            </navigator>
+            <view class="item_info_block">
+                <view class="left">
+                    <text>住2晚香格里拉＋
+                        2晚奔子栏
+                        驻店旅行管家服务
+                        酒店专车
+                        每日三餐</text>
+                </view>
+                <view class="right">
+                    <text>松赞林寺
+                        探访尼西汤堆村学习制作“尼西黑陶”
+                        尼丁原始森林徒步
+                        幸福村体验传统木碗绘制</text>
+                </view>
+            </view>
+        </view>
+        <view class="item_block">
+            <navigator url="{{'/pages/goodsDetail/index?spuId=981066709110776265'}}">
+                <image class="item_img" src="./images/bg_five@2x.png" mode="widthFix"></image>
+            </navigator>
+            <view class="item_info_block">
+                <view class="left">
+                    <text>住5晚松赞山居
+                        驻店旅行管家服务
+                        酒店专车
+                        每日三餐</text>
+                </view>
+                <view class="right">
+                    <text>尼丁原始森林徒步
+                        体验传统木碗绘制
+                        探访各几农藏村
+                        飞来寺景观道骑行参观
+                        或白马雪山保护区徒步
+                        参与学习制作尼西黑陶</text>
+                </view>
+            </view>
+        </view>
+        <view class="item_block">
+            <navigator url="{{'/pages/goodsDetail/index?spuId=981066709110776278'}}">
+                <image class="item_img" src="./images/bg_six@2x.png" mode="widthFix"></image>
+            </navigator>
+            <view class="item_info_block">
+                <view class="left">
+                    <text>住8晚松赞山居
+                        驻店旅行管家服务
+                        酒店专车
+                        每日三餐
+                        文峰寺＋虎跳峡＋松赞林寺＋大昭寺＋小昭寺＋布达拉宫＋罗布林卡＋羊卓雍错＋桑顶寺</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="product_list_block">
+        <view class="title_block">
+            <image mode="widthFix" src="./images/bg_cut@2x.png"></image>
+        </view>
+        <navigator class="product_item" url="{{'/pages/goodsDetail/index?spuId=976766648105198011'}}">
+            <image mode="widthFix" src="./images/product_one@2x.png"></image>
+        </navigator>
+        <navigator class="product_item" url="{{'/pages/goodsDetail/index?spuId=921645813241897471'}}">
+            <image mode="widthFix" src="./images/product_two@2x.png"></image>
+        </navigator>
+        <navigator class="product_item" url="{{'/pages/goodsDetail/index?spuId=936186019651413509'}}">
+            <image mode="widthFix" src="./images/product_three@2x.png"></image>
+        </navigator>
+        <navigator class="product_item" url="{{'/pages/goodsDetail/index?spuId=921645813233508559'}}">
+            <image mode="widthFix" src="./images/product_four@2x.png"></image>
+        </navigator>
+        <navigator class="product_item" url="{{'/pages/goodsDetail/index?spuId=936184868843446891'}}">
+            <image mode="widthFix" src="./images/product_five@2x.png"></image>
+        </navigator>
+    </view>
+
+    <view class="activity_note_block">
+        <view class="note_item">
+            <view class="title"><text>活动说明</text></view>
+            <view class="description"><text>在丰盛榜上预定任意松赞路线套餐，即可免费获赠由丰盛榜提供的无门槛现金券</text></view>
+        </view>
+        <view class="note_item">
+            <view class="title"><text>使用说明：</text></view>
+            <view class="description"><text>根据松赞路线套餐购买次数，用户获取现金券数量不限，并可在丰盛榜商城上无门槛消费</text></view>
+        </view>
+        <view class="note_item">
+            <view class="title"><text>领取方式：</text></view>
+            <view class="description"><text>旅程结束后48小时内，会有专人客服与您联系，届时请保持与客服沟通</text></view>
+        </view>
+        <view class="note_item">
+            <view class="title"><text>金额设置：</text></view>
+            <view class="description"><text>根据松赞路线套餐消费金额返还8%的现金券，最低价值1267元，最高价值3945元（如下图所示）</text></view>
+            <view class="table">
+                <view class="tr thead">
+                    <view class="td"><text>套餐</text></view>
+                    <view class="td"><text>套餐价格</text></view>
+                    <view class="td"><text>最高返还额</text></view>
+                </view>
+                <view class="tr">
+                    <view class="td"><text>1.松赞香格里拉环线：丽江＋香格里拉</text></view>
+                    <view class="td"><text>11880元起</text></view>
+                    <view class="td price"><text>1267元</text></view>
+                </view>
+                <view class="tr">
+                    <view class="td"><text>2.松赞香格里拉环线探索三江并流</text></view>
+                    <view class="td"><text>31400元起</text></view>
+                    <view class="td price"><text>3152元</text></view>
+                </view>
+                <view class="tr">
+                    <view class="td"><text>3.松赞香格里拉环线：香格里拉＋奔子栏</text></view>
+                    <view class="td"><text>14200元起</text></view>
+                    <view class="td price"><text>1512元</text></view>
+                </view>
+                <view class="tr">
+                    <view class="td"><text>4.松赞香格里拉环线：寻访香格里拉</text></view>
+                    <view class="td"><text>23960元起</text></view>
+                    <view class="td price"><text>2208元</text></view>
+                </view>
+                <view class="tr">
+                    <view class="td"><text>5.穿越滇藏秘境：丽江＋香格里拉＋拉萨</text></view>
+                    <view class="td"><text>29600元起</text></view>
+                    <view class="td price"><text>3945元</text></view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="minsu_app_block">
+        <image mode="widthFix" src="./images/bt_routine@2x.png" bind:tap="goToMinSu"></image>
+    </view>
+
+</view>

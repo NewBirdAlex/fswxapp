@@ -1,0 +1,81 @@
+<import src="../../../components/toast/toast.wxml" />
+<import src="../../../components/recommend/recommend.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="comments" wx:if="{{commentData.length!=0}}">
+      <view class="comments-head">
+            <button class="comments-head-l {{activeIndex==0? 'comments-head-choose' : ''}}" data-index="0" plain="true" bindtap="itemClick">全部（{{commentPageData.totalSize}}）</button>
+            <button class="comments-head-r {{activeIndex==1? 'comments-head-choose' : ''}}" data-index="1" plain="true" bindtap="itemClick">有图（{{commentPageImgData.totalSize}}）</button>
+      </view>
+      <view class="comments-con" hidden="{{activeIndex!=0}}">
+		<!-- 全部  -->
+            <view class="comments-con-item" wx:for="{{commentData}}" wx:key="{{index}}">
+                  <view class="comments-con-l">
+                        <image src="{{item.orsMemberImg?item.orsMemberImg:'/assets/default.png'}}"></image>
+                  </view>
+                  <view class="comments-con-r">
+                        <view class="comments-con-r-user">
+                              <view class="comments-con-r-user-name">
+                                    <text>{{item.oicMemberNickname}}</text>
+                                    <image src="/assets/stae_selected@2x.png" wx:for="{{item.oicStarNum}}" wx:key="{{index}}"></image>
+                                    <image src="/assets/star_normal@2x.png" wx:for="{{5-item.oicStarNum}}" wx:key="{{index}}"></image>
+                              </view>
+                              <view class="comments-con-r-user-date">
+                                    <text>{{item.oicCreatedTime}}</text>
+                              </view>
+                        </view>
+                        <view class="comments-con-r-title">{{item.oicComment}}</view>
+                        <view class="comments-con-r-pic">
+                              <image src="{{item}}" wx:for="{{item.oicImg}}" wx:for-index="ind" wx:key="{{ind}}" data-index="{{index}}" data-img="{{item}}" bindtap="previewImage"></image>
+                        </view>
+                        <view class="comments-con-r-spec">{{item.oicProductName}}</view>
+                  </view>
+            </view>
+		<view class="clear"></view>
+		<view class="weui-loadmore" wx:if="{{isLoading}}">
+			<view class="weui-loading"></view>
+			<view class="weui-loadmore__tips">正在加载</view>
+		</view>
+		<view class="weui-loadmore weui-loadmore_line" wx:if="{{noMoreData&&commentData.length!=0}}">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line gray">没有更多</view>
+		</view>
+		<view class="weui-loadmore weui-loadmore_line" wx:if="{{commentData.length==0}}">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line gray">暂无评论</view>
+		</view>
+      </view>
+	<view class="comments-con" hidden="{{activeIndex!=1}}">
+		<!-- 有图  -->
+		<view class="comments-con-item" wx:for="{{commentDataImg}}" wx:key="{{index}}">
+                  <view class="comments-con-l">
+                        <image src="{{item.orsMemberImg?item.orsMemberImg:'/assets/default.png'}}"></image>
+                  </view>
+                  <view class="comments-con-r">
+                        <view class="comments-con-r-user">
+                              <view class="comments-con-r-user-name">
+                                    <text>{{item.oicMemberNickname}}</text>
+                                    <image src="/assets/stae_selected@2x.png" wx:for="{{item.oicStarNum}}" wx:key="{{index}}"></image>
+                                    <image src="/assets/star_normal@2x.png" wx:for="{{5-item.oicStarNum}}" wx:key="{{index}}"></image>
+                              </view>
+                              <view class="comments-con-r-user-date">
+                                    <text>{{item.oicCreatedTime}}</text>
+                              </view>
+                        </view>
+                        <view class="comments-con-r-title">{{item.oicComment}}</view>
+                        <view class="comments-con-r-pic">
+                              <image src="{{item}}" wx:for="{{item.oicImg}}" wx:key="{{index}}" data-index="{{index}}" data-img="{{item}}"  bindtap="previewImage"></image>
+                        </view>
+                        <view class="comments-con-r-spec">{{item.oicProductName}}</view>
+                  </view>
+            </view>
+		<view class="clear"></view>
+		<view class="weui-loadmore" wx:if="{{isLoading}}">
+			<view class="weui-loading"></view>
+			<view class="weui-loadmore__tips">正在加载</view>
+		</view>
+		<view class="weui-loadmore weui-loadmore_line" wx:if="{{noMoreImgData&&commentDataImg.length!=0}}">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line gray">没有更多</view>
+		</view>
+		<view class="weui-loadmore weui-loadmore_line" wx:if="{{commentDataImg.length==0}}">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line gray">暂无评论</view>
+		</view>
+	</view>
+</view>

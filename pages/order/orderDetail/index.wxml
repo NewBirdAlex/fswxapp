@@ -1,0 +1,150 @@
+<import src="../../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<block wx:if="{{orderData&&optionsType==1}}">
+      <view class="user-time" wx:if="{{orderData.ordStatus==0&&orderData.ordExpireTime}}">剩余付款时间： {{orderData.leaveTime}}</view>
+      <view class="user-time">订单编号：{{orderData.ordOrderNo}}
+            <text class="time-sure result-price" wx:if="{{orderData.ordStatus==0&&!orderData.ordExpireTime}}">待付款</text>
+            <text class="time-sure result-price" wx:if="{{orderData.ordStatus==3}}">交易成功</text>
+            <text class="time-sure result-price" wx:if="{{orderData.ordStatus==4}}">交易关闭</text>
+            <text class="time-sure result-price" wx:if="{{orderData.ordStatus==1}}">待发货</text>
+            <text class="time-sure result-price" wx:if="{{orderData.ordStatus==2}}">待收货</text>
+            <text class="time-sure result-price" wx:if="{{orderData.ordStatus==5}}">售后</text>
+      </view>
+      <view class="user-info">
+            <view class="user-name">收货人： {{orderData.ordReceiveName}}
+                  <text class="user-tel">{{orderData.ordReceiveMobile}}</text>
+            </view>
+            <view class="user-addr">收货地址：{{orderData.ordReceiveProvince}}{{orderData.ordReceiveCitity}}{{orderData.ordReceiveArea}}{{orderData.ordReceiveDetail}}</view>
+      </view>
+      <block wx:if="{{logisticsData}}">
+            <view class="trans" bindtap="goLogisticsDetail">
+                  {{logisticsData[0].oddContent}}
+                  <image class="arrow" src='/assets/back_normal@2x.png'></image>
+            </view>
+      </block>
+      <view class="top-tit">丰盛榜健康商城 </view>
+      <view class="good-contain" wx:for="{{orderData.orderDetailList}}" data-spuid="{{item.detailSpu.spuId}}" bindtap="goToGoodsDetail">
+            <view>
+                  <image class="good-img" src="{{item.detailSpu.spuPic}}"></image>
+            </view>
+            <view class="good-right">
+                  <view class="good-tit">{{item.detailSpu.spuName}}</view>
+                  <view class="good-many">
+                        已选：{{item.detailSku.skuName}}
+                  </view>
+                  <view class="good-price">￥{{item.ordOriginal-item.ordDiscount/item.ordSkuNum}}
+                        <label wx:if="{{item.ordDiscount!=0}}">￥{{item.ordOriginal}}</label>
+                        <text class="good-num">x{{item.ordSkuNum}} </text>
+                  </view>
+            </view>
+      </view>
+      <view class="last-top">
+            <view>下单时间：{{orderData.ordCreatedTime}} </view>
+            <view class="pay-mean" wx:if="{{orderData.orsPayChannel}}">支付方式：微信</view>
+      </view>
+      <view class="result">商品总价
+            <text class="result-price">￥{{orderData.ordAmount}}</text>
+      </view>
+      <view class="result">运费
+            <text class="result-price">￥{{orderData.ordTransportAmount}}</text>
+      </view>
+      <view class="result">优惠券
+            <text class="result-price">￥-{{orderData.ordCampaignShareAmount}}</text>
+      </view>
+      <view class="result">立减
+            <text class="result-price">￥-{{(orderData.ordCampaignAmount-orderData.ordCampaignShareAmount)+orderData.promotionDiscount}}</text>
+      </view>
+      <view class="result">礼品卡抵扣
+            <text class="result-price">￥-{{orderData.ordGiftPay?orderData.ordGiftPay:'0.00'}}</text>
+      </view>
+      <view class="result last-result">实付金额
+            <text class="result-price last-price">￥{{orderData.ordOpenPay>0?orderData.ordOpenPay:"0.00"}}</text>
+      </view>
+      <view class="good-again">
+             <button plain="true" open-type="contact" formType="submit" class="again-word">联系客服</button> 
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.ordStatus==2||orderData.ordStatus==3}}" bindtap="goLogisticsDetail">查看物流</button>
+            <button plain="true" formType="submit" class="again-word" wx:if="{{orderData.ordStatus==0}}" bindtap="goPay">付款</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.ordStatus==0}}" bindtap="cancelOrder">取消订单</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.ordStatus==2}}" data-orid="{{orderData.ordOrderId}}" bindtap="comfirmGoods">确认收货</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.ordStatus==2&&orderData.ordDelayNum==0}}" data-orid="{{orderData.ordOrderId}}" bindtap="delayMakeSure">延长收货</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.ordStatus==2&&orderData.ordDelayNum>0}}" bindtap="delayCancel">已延长收货</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.ordStatus==3&&orderData.orderDetailList[0].ordCommentStatus!=1}}" bindtap="goComment">评价</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.ordStatus==3&&orderData.orderDetailList[0].ordCommentStatus!=0}}" bindtap="goCommentList">查看评论</button>
+            <button plain="true" formType="submit" class="again-word" wx:if="{{orderData.ordStatus==3||orderData.ordStatus==4}}" bindtap="buyAgain">再次购买</button>
+      </view>
+</block>
+<block wx:if="{{orderData&&optionsType==2}}">
+      <view class="user-time" wx:if="{{orderData.orderSubList[0].ordStatus==0&&orderData.ordExpireTime}}">剩余付款时间： {{orderData.leaveTime}}</view>
+      <view class="user-time">订单编号：{{orderData.orstNo}}
+            <text class="time-sure result-price" wx:if="{{orderData.orderSubList[0].ordStatus==0&&!orderData.ordExpireTime}}">待付款</text>
+            <text class="time-sure result-price" wx:if="{{orderData.orderSubList[0].ordStatus==3}}">交易成功</text>
+            <text class="time-sure result-price" wx:if="{{orderData.orderSubList[0].ordStatus==4}}">交易关闭</text>
+            <text class="time-sure result-price" wx:if="{{orderData.orderSubList[0].ordStatus==1}}">待发货</text>
+            <text class="time-sure result-price" wx:if="{{orderData.orderSubList[0].ordStatus==2}}">待收货</text>
+            <text class="time-sure result-price" wx:if="{{orderData.orderSubList[0].ordStatus==5}}">售后</text>
+      </view>
+      <view class="user-info">
+            <view class="user-name">收货人： {{orderData.orderSubList[0].ordReceiveName}}
+                  <text class="user-tel">{{orderData.orderSubList[0].ordReceiveMobile}}</text>
+            </view>
+            <view class="user-addr">收货地址：{{orderData.orderSubList[0].ordReceiveProvince}}{{orderData.orderSubList[0].ordReceiveCitity}}{{orderData.orderSubList[0].ordReceiveArea}}{{orderData.orderSubList[0].ordReceiveDetail}}</view>
+      </view>
+      <block wx:if="{{logisticsData}}">
+            <view class="trans" bindtap="goLogisticsDetail">
+                  {{logisticsData[0].oddContent}}
+                  <image class="arrow" src='/assets/back_normal@2x.png'></image>
+            </view>
+      </block>
+      <view class="top-tit">丰盛榜健康商城 </view>
+      <block wx:for="{{orderData.orderSubList}}" wx:for-item="sitem">
+            <view class="good-contain" wx:for="{{sitem.orderDetailList}}" data-spuid="{{item.detailSpu.spuId}}" bindtap="goToGoodsDetail">
+                  <view>
+                        <image class="good-img" src="{{item.detailSpu.spuPic}}"></image>
+                  </view>
+                  <view class="good-right">
+                        <view class="good-tit">{{item.detailSpu.spuName}}</view>
+                        <view class="good-many">
+                              已选：{{item.detailSku.skuName}}
+                        </view>
+                        <view class="good-price">￥{{item.ordOriginal-item.ordDiscount/item.ordSkuNum}}
+                              <label wx:if="{{item.ordDiscount!=0}}">￥{{item.ordOriginal}}</label>
+                              <text class="good-num">x{{item.ordSkuNum}} </text>
+                        </view>
+                  </view>
+            </view>
+      </block>
+      <view class="last-top">
+            <view>下单时间：{{orderData.orderSubList[0].ordCreatedTime}} </view>
+            <view class="pay-mean" wx:if="{{orderData.orsPayChannel}}">支付方式：微信</view>
+      </view>
+      <view class="result">商品总价
+            <text class="result-price">￥{{orderData.orsTotalAmount}}</text>
+      </view>
+      <view class="result">运费
+            <text class="result-price">￥{{orderData.orsExpressFee}}</text>
+      </view>
+      <view class="result">优惠券
+            <text class="result-price">￥-{{orderData.orsCouponPer}}</text>
+      </view>
+      <view class="result">立减
+            <text class="result-price">￥-{{(orderData.orsActivityPre-orderData.orsCouponPer)+orderData.promotionDiscount}}</text>
+      </view>
+      <view class="result">礼品卡抵扣
+            <text class="result-price">￥-{{orderData.orsGiftPay?orderData.orsGiftPay:'0.00'}}</text>
+      </view>
+      <view class="result last-result">实付金额
+            <text class="result-price last-price">￥{{orderData.orsOpenPay>0?orderData.orsOpenPay:"0.00"}}</text>
+      </view>
+      <view class="good-again">
+            <button plain="true" open-type="contact" formType="submit" class="again-word">联系客服</button> 
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.orderSubList[0].ordStatus==2||orderData.orderSubList[0].ordStatus==3}}" bindtap="goLogisticsDetail">查看物流</button>
+            <button plain="true" formType="submit" class="again-word" wx:if="{{orderData.orderSubList[0].ordStatus==0}}" bindtap="goPay">付款</button> 
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.orderSubList[0].ordStatus==0}}" bindtap="cancelOrder">取消订单</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.orderSubList[0].ordStatus==2}}" data-orid="{{orderData.orderSubList[0].ordOrderId}}" bindtap="comfirmGoods">确认收货</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.orderSubList[0].ordStatus==2}}" data-orid="{{orderData.orderSubList[0].ordOrderId}}"  bindtap="delayMakeSure">延长收货</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.orderSubList[0].ordStatus==2&&orderData.ordDelayNum>0}}" bindtap="delayCancel">已延长收货</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.orderSubList[0].ordStatus==3&&orderData.orderDetailList[0].ordCommentStatus!=1}}" bindtap="goComment">评价</button>
+            <button plain="true" formType="submit" class="again-word no-imp" wx:if="{{orderData.orderSubList[0].ordStatus==3&&orderData.orderDetailList[0].ordCommentStatus!=0}}" bindtap="goCommentList">查看评论</button>
+            <button plain="true" formType="submit" class="again-word" wx:if="{{orderData.orderSubList[0].ordStatus==3||orderData.orderSubList[0].ordStatus==4}}" bindtap="buyAgain">再次购买</button>
+      </view>
+</block>

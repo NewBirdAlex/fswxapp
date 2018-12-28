@@ -1,0 +1,144 @@
+/* pages/afterSales/index.wxss */
+@import "../../template/afterSalesItem.wxss";
+
+.weui-navbar {
+      background: #fff;
+	position: fixed;
+	top: 0;
+}
+
+page {
+      background-color: #f7f7f7;
+}
+
+.order-title {
+      display: flex;
+      color: #999;
+      font-size: 22rpx;
+      height: 60rpx;
+      padding-left: 24rpx;
+      align-items: center;
+}
+
+.order-divider {
+      padding-top: 1rpx;
+      background: #e5e5e5;
+}
+
+.order_item {
+      margin-top: 20rpx;
+      background-color: #fff;
+}
+
+.item_msg {
+      height: 60rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24rpx;
+      border-bottom: 2rpx solid #e5e5e5;
+}
+
+.item_msg text {
+      font-family: 'PingFangSC-Regular';
+      font-size: 22rpx;
+      color: #999;
+}
+
+.item_con {
+      padding: 0 22rpx;
+      height: 222rpx;
+}
+
+.item_con .item_con_l {
+      float: left;
+      width: 140rpx;
+      height: 140rpx;
+      border: 2rpx solid #e5e5e5;
+      margin-top: 20rpx;
+}
+
+.item_con .item_con_l image {
+      width: 100%;
+      height: 100%;
+}
+
+.item_con .item_con_r {
+      width: 545rpx;
+      float: left;
+      margin-left: 13rpx;
+}
+
+.item_con .item_con_r .item_con_r_top {
+      margin-top: 14rpx;
+}
+
+.item_con .item_con_r .item_con_r_top text {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      font-family: 'PingFangSC-Regular';
+      font-size: 26rpx;
+      color: #4a4a4a;
+      height: 80rpx;
+}
+
+.item_con .item_con_r .item_con_r_cen {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.item_con .item_con_r .item_con_r_cen text {
+      font-family: 'PingFangSC-Regular';
+      font-size: 22rpx;
+      color: #999;
+}
+
+.item_con .item_con_r .item_con_r_cen .item_con_r_cen_has {
+      width: 400rpx;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+}
+
+.item_con .item_con_r .item_con_r_bot {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20rpx;
+}
+
+.item_con .item_con_r .item_con_r_bot button {
+      background: #fff;
+      border: 2rpx solid #ff4882;
+      border-radius: 4rpx;
+      height: 55rpx;
+      /* width: 191rpx; */
+      line-height: 55rpx;
+	padding: 0 30rpx;
+      font-family: 'PingFangSC-Regular';
+      font-size: 24rpx;
+      color: #ff4882;
+      margin-left: unset;
+      margin-right: unset;
+}
+
+.item_con .item_con_r .item_con_r_bot text {
+      font-family: 'PingFangSC-Regular';
+      font-size: 24rpx;
+      color: #ccc;
+      margin-top: 20rpx;
+}
+
+
+.item_state {
+	padding: 0 22rpx 10rpx;
+}
+.item_state view {
+	font-family: 'PingFangSC-Regular';
+	font-size: 22rpx;
+	color: #999;
+}
+
+

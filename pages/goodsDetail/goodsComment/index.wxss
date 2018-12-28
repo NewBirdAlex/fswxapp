@@ -1,0 +1,115 @@
+.comments {
+      width: 100%;
+}
+
+.comments-head{
+	padding: 20rpx 30rpx 30rpx;
+	display: flex;
+	justify-content: flex-start;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #ffffff;
+}
+.comments-head button {
+	width: 345rpx;
+	height: 50rpx;
+	background: #ffffff;
+	font-size: 24rpx;
+	color: #00b9a4;
+	border: 2rpx solid #00b9a4;
+	text-align: center;
+	line-height: 50rpx;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+.comments-head .comments-head-l{
+	border-radius: 10rpx 0 0 10rpx;
+}
+.comments-head .comments-head-r{
+	border-radius: 0 10rpx 10rpx 0;
+}
+.comments-head .comments-head-choose {
+	background: #00b9a4;
+	color: #ffffff;
+}
+
+.comments-con {
+      background-color: #fff;
+	width: 100%;
+	padding-top: 100rpx;
+}
+
+.comments-con-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 20rpx;
+      border-bottom: 1rpx solid #d9d9d9;
+}
+
+.comments-con-item .comments-con-l {
+      width: 55rpx;
+}
+
+.comments-con-item .comments-con-l image {
+      width: 55rpx;
+      height: 55rpx;
+      border-radius: 50%;
+}
+
+.comments-con-item .comments-con-r {
+      padding-left: 15rpx;
+	width: 655rpx;
+}
+
+.comments-con-item .comments-con-r .comments-con-r-user {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: center;
+}
+
+.comments-con-item .comments-con-r .comments-con-r-user .comments-con-r-user-name {
+      font-size: 18rpx;
+      color: #4a4a4a;
+}
+
+.comments-con-item .comments-con-r .comments-con-r-user .comments-con-r-user-name text {
+      margin-right: 10rpx;
+}
+
+.comments-con-item .comments-con-r .comments-con-r-user .comments-con-r-user-name image {
+      width: 16rpx;
+      height: 16rpx;
+      margin-left: 8rpx;
+}
+
+.comments-con-item .comments-con-r .comments-con-r-user .comments-con-r-user-date {
+      color: #9b9b9b;
+      font-size: 18rpx;
+}
+
+.comments-con-item .comments-con-r .comments-con-r-title {
+      font-size: 26rpx;
+      color: #4a4a4a;
+      margin: 20rpx 0;
+}
+
+.comments-con-item .comments-con-r .comments-con-r-pic image {
+      width: 200rpx;
+      height: 200rpx;
+      margin: 15rpx 15rpx 0 0;
+}
+
+.comments-con-item .comments-con-r .comments-con-r-spec {
+      font-size: 24rpx;
+      color: #9b9b9b;
+      margin-top: 20rpx;
+}
+
+.weui-loadmore__tips.weui-loadmore__tips_in-line.gray {
+	background-color: #ffffff;
+}

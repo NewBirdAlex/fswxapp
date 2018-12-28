@@ -1,0 +1,80 @@
+@import "../template/horizontalItems.wxss";
+
+.flash-sale {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  border: 0.5rpx solid #e6e6e6;
+  overflow: hidden;
+}
+
+.flash-sale-image {
+  display: block;
+  float: left;
+  width: 250rpx;
+  height: 250rpx;
+  margin: 9rpx 0 13rpx 30rpx;
+}
+
+.flash-sale-content{
+  display:inline-block;
+  margin-left:67rpx;
+  width:288rpx;
+  margin-top:37rpx;
+}
+
+.flash-sale-title {
+  height: 76rpx;
+  width: 100%;
+  white-space: normal;
+}
+
+.flash-sale-title-image {
+  position: absolute;
+  width: 48rpx;
+  height: 26rpx;
+  margin-top: 8rpx;
+}
+
+.flash-sale-title-name {
+  text-indent: 54rpx;
+  font-size:32rpx;
+  line-height: 38rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.flash-sale-price {
+  width: 100%;
+  position: relative;
+  margin-top:6rpx;
+  
+}
+
+.flash-sale-new-price {
+  display: inline;
+  color: #F93473;
+  font-size:52rpx;
+}
+
+.flash-sale-old-price {
+  display: inline;
+  color: #333;
+  font-size:24rpx;
+  margin-left: 10rpx;
+  text-decoration: line-through;
+}
+
+.flash-sale-buy {
+  display: flex;
+  color: white;
+  font-size: 24rpx;
+  width: 288rpx;
+  height: 56rpx;
+  background: #f93473;
+  border-radius: 5rpx;
+  justify-content: center;
+  align-items: center;
+}

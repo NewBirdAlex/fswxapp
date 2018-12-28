@@ -1,0 +1,215 @@
+page {
+      background: #f7f7f7;
+}
+
+.user-time {
+      height: 70rpx;
+      line-height: 70rpx;
+      margin-top: 25rpx;
+      font-size: 28rpx;
+      color: #4a4a4a;
+      padding-left: 25rpx;
+      border-bottom: 1rpx solid #e4e4e4;
+      background: #fff;
+      padding-right: 20rpx;
+}
+
+.time-sure {
+      font-size: 26rpx;
+      color: #f93473;
+}
+
+.user-info {
+      height: 135rpx;
+      background: #fff;
+      display: flex;
+      padding: 0 20rpx;
+      flex-direction: column;
+      justify-content: center;
+}
+
+.user-addr {
+      font-size: 24rpx;
+      color: #4a4a4a;
+      margin-top: 20rpx;
+}
+
+.user-name {
+      font-size: 28rpx;
+      color: #4a4a4a;
+}
+
+.user-tel {
+      float: right;
+      margin-right: 20rpx;
+}
+
+.top-tit {
+      height: 88rpx;
+      line-height: 88rpx;
+      padding-left: 60rpx;
+      background: #fff;
+      margin-top: 15rpx;
+	font-size: 30rpx;
+}
+
+.good-contain {
+      display: flex;
+      flex-direction: row;
+      padding: 40rpx 22rpx;
+      background-color: #fff;
+      border-top: 1rpx solid #e4e4e4;
+}
+
+.good-right {
+      flex: 1;
+      width: 75%;
+}
+
+.good-img {
+      width: 140rpx;
+      height: 140rpx;
+      margin-right: 20rpx;
+}
+
+.good-tit {
+      font-size: 26rpx;
+      color: #4a4a4a;
+      height: 36rpx;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+}
+
+.good-many {
+      font-size: 22rpx;
+      color: #9b9b9b;
+      margin-top: 30rpx;
+}
+
+.good-num {
+      float: right;
+      font-size: 22rpx;
+      color: #9b9b9b;
+}
+
+.good-price {
+      font-size: 30rpx;
+      color: #f93473;
+      margin-top: 10rpx;
+}
+
+.good-price label {
+	font-size: 22rpx;
+	color: #666;
+}
+
+.before-price {
+      font-size: 24rpx;
+      color: #9b9b9b;
+      text-decoration: line-through;
+      margin-left: 10rpx;
+}
+
+.more-dis {
+      font-size: 24rpx;
+      color: #f93473;
+      margin-left: 40rpx;
+}
+
+.last-top {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 117rpx;
+      padding-left: 20rpx;
+      font-size: 24rpx;
+      color: #4a4a4a;
+      background: #fff;
+      margin-top: 20rpx;
+}
+
+.pay-mean {
+      margin-top: 10rpx;
+}
+
+.result {
+      height: 69rpx;
+      line-height: 69rpx;
+      font-size: 26rpx;
+      color: #4a4a4a;
+      background: #fff;
+      border-top: 1rpx solid #e4e4e4;
+      padding: 0 20rpx;
+}
+
+.result-price {
+      float: right;
+}
+
+.last-price {
+      color: #f93473;
+}
+
+.last-result {
+      font-weight: bold;
+}
+
+.good-again {
+      height: 93rpx;
+      font-size: 24rpx;
+      color: #f93473;
+      border-top: 1rpx solid #e4e4e4;
+      border-bottom: 1rpx solid #e4e4e4;
+      background-color: #fff;
+      margin-bottom: 30rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+}
+
+.good-again  .again-word {
+      padding: 0 20rpx;
+      height: 46rpx;
+      line-height: 46rpx;
+      border: 1rpx solid #f93473;
+      border-radius: 30rpx;
+      text-align: center;
+      margin-top: 20rpx;
+      margin-right: 20rpx;
+	font-size: 24rpx;
+	margin-left: 0;
+	color: #f93473;
+	background-color:transparent;
+}
+
+.good-again .no-imp {
+      color: #4a4a4a;
+      border: 1rpx solid #e4e4e4;
+}
+
+.arrow {
+      width: 55rpx;
+      height: 55rpx;
+      float: right;
+      margin-top: 20rpx;
+}
+
+.trans {
+      margin-top: 15rpx;
+      height: 90rpx;
+      line-height: 90rpx;
+      font-size: 24rpx;
+      color: #4a4a4a;
+      background-color: #fff;
+      padding-left: 20rpx;
+      padding-right: 20rpx;
+}
+
+.trans-detail {
+      padding: 0 20rpx;
+      padding-bottom: 40rpx;
+      background-color: #fff;
+      font-size: 24rpx;
+      color: #4a4a4a;
+}

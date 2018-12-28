@@ -1,0 +1,205 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.98",
+	"appid": "wxbe1441b1d8cdf0df",
+	"projectname": "mall",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "商品详情页",
+					"pathName": "pages/goodsDetail/index",
+					"query": "spuId=921645813229314312"
+				},
+				{
+					"id": 1,
+					"name": "商品评价列表页",
+					"pathName": "pages/goodsDetail/goodsComment/index",
+					"query": "spuId=923129811398975570"
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/cart/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "填写订单页",
+					"pathName": "pages/fillOrder/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单列表",
+					"pathName": "pages/order/orderList/index",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "个人中心",
+					"pathName": "pages/user/index",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "查看物流",
+					"pathName": "pages/order/viewFlow/index",
+					"query": "ordOrderId=926377930626568218"
+				},
+				{
+					"id": 7,
+					"name": "订单详情",
+					"pathName": "pages/order/orderDetail/index",
+					"query": "type=1&orderId=952842473493913673"
+				},
+				{
+					"id": -1,
+					"name": "实名认证",
+					"pathName": "pages/realName/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "查看个人评论",
+					"pathName": "pages/order/viewEvaluation/index",
+					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "确认收货",
+					"pathName": "pages/order/getGoods/index",
+					"query": "ordOrderId=925985419869446165"
+				},
+				{
+					"id": -1,
+					"name": "商品评论页",
+					"pathName": "pages/order/goodsEvaluation/index",
+					"query": "ordOrderId=925985419869446165"
+				},
+				{
+					"id": -1,
+					"name": "评论成功页",
+					"pathName": "pages/order/successEvaluation/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "新增实名验证",
+					"pathName": "pages/realName/addRealName/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "填写订单--选择优惠券",
+					"pathName": "pages/fillOrder/coupon/index",
+					"query": ""
+				},
+				{
+					"id": 15,
+					"name": "商品搜索页",
+					"pathName": "pages/search/index",
+					"query": "keyWord=B"
+				},
+				{
+					"id": -1,
+					"name": "礼品卡",
+					"pathName": "pages/giftCard/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "绑定礼品卡",
+					"pathName": "pages/giftCard/addCard/addCard",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "售后",
+					"pathName": "pages/afterSales/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "售后",
+					"pathName": "pages/afterSales/detail/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请售后",
+					"pathName": "pages/afterSales/apply/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的-售后",
+					"pathName": "pages/afterSales/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的-申请售后",
+					"pathName": "pages/afterSales/apply/index",
+					"query": "orderId=968758319764365319&orstNo=968758319764365317"
+				},
+				{
+					"id": -1,
+					"name": "我的-退款详情",
+					"pathName": "pages/afterSales/detail/index",
+					"query": "orrOrdId=969037860026081293"
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/index",
+					"query": "keyWord=(A"
+				},
+				{
+					"id": 25,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "source=online_fsb_emd_20180313"
+				},
+				{
+					"id": 26,
+					"name": "类目列表",
+					"pathName": "pages/category/category",
+					"query": "fenceId=629&fenceName=旅行用品&category=true"
+				},
+				{
+					"id": 27,
+					"name": "松赞活动页",
+					"pathName": "subPackages/songzan/pages/index/index",
+					"query": ""
+				}
+			]
+		}
+	}
+}

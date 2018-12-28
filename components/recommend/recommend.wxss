@@ -1,0 +1,67 @@
+/* 大家都在看  */
+
+.cpn-see {
+      width: 750rpx;
+      background-color: #fff;
+      margin-top: 20rpx;
+      border-top: 1rpx solid #d9d9d9;
+}
+
+.cpn-see-title {
+      padding: 15rpx 0;
+      margin: 0 20rpx;
+      font-size: 30rpx;
+      color: #4a4a4a;
+      text-align: center;
+      border-bottom: 1px solid rgba(229, 229, 229, 0.9);
+}
+
+.cpn-see-con-item {
+      width: 375rpx;
+      padding-top: 20rpx;
+      display: inline-block;
+      text-align: center;
+}
+
+.cpn-see-con-l image {
+      border: 1px solid rgba(229, 229, 229, 0.9);
+      width: 312rpx;
+      height: 312rpx;
+}
+
+.cpn-see-con-r {
+      width: 320rpx;
+      padding: 0 0 10rpx 30rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+}
+
+.cpn-see-con-r .cpn-see-con-r-name {
+      font-size: 28rpx;
+      color: #4a4a4a;
+}
+
+.cpn-see-con-r .cpn-see-con-r-name text {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+}
+
+.cpn-see-con-r .cpn-see-con-r-spec {
+      font-size: 22rpx;
+      color: #4a4a4a;
+}
+
+.cpn-see-con-r .cpn-see-con-r-price {
+      font-size: 30rpx;
+      color: #f93473;
+}
+
+.cpn-see-con-r .cpn-see-con-r-price text {
+      font-size: 18rpx;
+      color: #999;
+	padding-left: 15rpx;
+}

@@ -1,0 +1,20 @@
+<template name='productItem'>
+  <navigator url='/pages/goodsDetail/index?spuId={{spuId}}'>
+ 
+    <view class='product-item'>
+      <view class='product-image-holder'>
+        <image class='product-image' src="{{mediumHomeIcons.length>0?mediumHomeIcons[0]:''}}"></image>
+      </view>
+      <view class='product-title'>
+        <image class="product-title-image" src='/assets/ic_mall_label_ziying.png'></image>
+        <view class='product-title-name'>{{title}}</view>
+      </view>
+      <view class='product-price'>
+        <view class='new-price'>¥{{goodsInfo.preferentialPrice}}</view>
+        <view wx:if="{{goodsInfo.oldPrice>0.0}}" class='old-price'>¥{{goodsInfo.oldPrice}}</view>
+        <view wx:if="{{flashSale}}" class='buy'>立即抢</view>
+        
+      </view>
+    </view>
+  </navigator>
+</template>

@@ -1,0 +1,15 @@
+ @import "../template/productItem.wxss";
+ @import "../template/productMore.wxss";
+.product-scrllo-view{
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.list-item{
+  display: inline-block;
+  margin: 20rpx 0rpx 20rpx 28rpx;
+  width: 40%;
+}
+.list-item-last{
+  margin-right: 28rpx;
+}

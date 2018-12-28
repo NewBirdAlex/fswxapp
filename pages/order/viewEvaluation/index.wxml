@@ -1,0 +1,32 @@
+<view class="container">
+      <block wx:for="{{dataList}}" wx:key="{{item}}">
+            <view class="good-contain">
+                  <view>
+                        <image class="good-img" src="{{item.oicProductPic}}"></image>
+                  </view>
+                  <view class="good-right">
+                        <view class="good-tit">{{item.oicProductName}}</view>
+                        <view class="good-weight">{{item.oicProductName}}
+                              <text class="weight-detail">{{item.oicCreatedTime}}</text>
+                        </view>
+                        <view>
+                              <image class="star" wx:for="{{item.oicStarNum}}"  src="/assets/stae_selected@2x.png" wx:key="{{index}}"></image>
+                              <image class="star" wx:for="{{5-item.oicStarNum}}"  src="/assets/star_normal@2x.png" wx:key="{{index}}"></image>
+                        </view>
+                  </view>
+            </view>
+            <view class="eva-content"> {{item.oicComment}}</view>
+            <view class="eva-part">
+                  <image class="eva-img" wx:for="{{item.oicImg}}"  wx:for-item="sitem" wx:for-index="idx" src="{{sitem.src}}" wx:if="{{sitem.src}}" wx:key="{{idx}}" data-index="{{index}}" data-src="{{sitem.src}}" bindtap="previewImage"></image>
+            </view>
+      </block>
+
+      <view class="clear"></view>
+      <view class="weui-loadmore" wx:if="{{isLoading}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+      </view>
+      <view class="weui-loadmore weui-loadmore_line" wx:if="{{noMoreData&&dataList.length!=0}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line gray">没有更多</view>
+      </view>
+</view>

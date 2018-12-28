@@ -1,0 +1,25 @@
+<import src="../template/horizontalItems.wxml" />
+<template name="flashSale">
+  <view class="flashSale">
+     <navigator url="/pages/goodsDetail/index?spuId={{homeModel.first.spuId}}"> 
+      <view class='flash-sale'>
+        <image class='flash-sale-image' src="{{homeModel.first.mediumHomeIcons.length>0?homeModel.first.mediumHomeIcons[0]:''}}" />
+        <view class='flash-sale-content'>
+          <view class='flash-sale-title'>
+            <image class="flash-sale-title-image" src='/assets/ic_mall_label_ziying.png'></image>
+            <view class='flash-sale-title-name'>{{homeModel.first.title}}</view>
+          </view>
+          <view class='flash-sale-price'>
+            <view class='flash-sale-old-price' wx:if='{{homeModel.first.goodsInfo.oldPrice>0.0}}'>¥{{homeModel.first.goodsInfo.oldPrice}}</view>
+            <view class='flash-sale-old-price' style='color:#F93473;margin-left:12rpx;'>¥</view>
+            <view class='flash-sale-new-price' style=''>{{homeModel.first.goodsInfo.preferentialPrice}}</view>
+          </view>
+          <view class='flash-sale-buy'>
+            <view>立即抢</view>
+          </view>
+        </view>
+      </view>
+     </navigator> 
+    <template is="horizontalItems" data="{{...homeModel}}" />
+  </view>
+</template>

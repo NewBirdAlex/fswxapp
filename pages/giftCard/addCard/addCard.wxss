@@ -1,0 +1,64 @@
+form {
+      width: 100%;
+      height: 100%;
+}
+page {
+	background: #f7f7f7;
+}
+.card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 40rpx;
+}
+.card label {
+	color: #888888;
+	font-family: 'PingFangSC-Regular';
+	font-size: 28rpx;
+	width: 168rpx;
+}
+.card input {
+	width: 460rpx;
+	height: 88rpx;
+	background: #FFFFFF;
+	color: #B2B2B2;
+	letter-spacing: 0;
+	border: 1rpx solid #E5E5E5;
+	padding: 0 30rpx;
+	font-family: 'PingFangSC-Regular';
+	font-size: 28rpx;
+}
+
+.state {
+	font-family: 'PingFangSC-Regular';
+	font-size: 22rpx;
+	color: #000000;
+	text-align: right;
+	margin-top: 20rpx;
+	margin-right: 30rpx;
+}
+.state text {
+	font-family: 'PingFangSC-Regular';
+	font-size: 22rpx;
+	color: #FF4882;
+}
+
+.add {
+	background: #4BC6B1;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 88rpx;color: #fff;
+	font-family: 'PingFangSC-Regular';
+	font-size: 34rpx;
+	border-radius: unset;
+	border: unset;
+}
+.add::after {
+	border-radius: unset;
+	border: unset;
+}
+.add_h {
+	opacity: 0.5;
+}

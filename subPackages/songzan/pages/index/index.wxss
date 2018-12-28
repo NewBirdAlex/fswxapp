@@ -1,0 +1,180 @@
+
+.container {
+    background-color: #000;
+    color: #fff;
+}
+
+#first_page {
+    /*
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    */
+    width: 100vw;
+    height: 100vh;
+}
+#first_page image {
+    width: 100%;
+    height: 100%;
+}
+#first_page .arrow_btn {
+    position: absolute;
+    left: 50%;
+    bottom: 8rpx;
+    transform: translateX(-50%);
+    width:48rpx;
+    height: 22rpx;
+    animation: flash 0.6s ease-in-out 0s infinite;
+}
+@keyframes flash {
+    0% {
+        bottom: 8rpx;
+    }
+    50% {
+        bottom: 16rpx;
+    }
+    100% {
+        bottom: 8rpx;
+    }
+}
+
+.hotel_list_block {
+    width: 100%;
+}
+.hotel_list_block .item_block .item_img {
+    width: 100%;
+    background-color: #3fa;
+    display: block;
+}
+.hotel_list_block .item_block .item_info_block {
+    font-size: 26rpx;
+    padding: 1em 1em 4em 1em;
+    overflow: hidden;
+}
+.hotel_list_block .item_block .left,
+.hotel_list_block .item_block .right {
+    float: left;
+}
+
+/* 第1个酒店 */
+.hotel_list_block .item_block:nth-child(1) .left {
+    width: 60%;
+}
+.hotel_list_block .item_block:nth-child(1) .right {
+    width: 40%;
+}
+
+/* 第2个酒店 */
+.hotel_list_block .item_block:nth-child(2) .left {
+    width: 100%;
+}
+
+/* 第3个酒店 */
+.hotel_list_block .item_block:nth-child(3) .item_info_block {
+    padding-right: 0.5em;
+}
+.hotel_list_block .item_block:nth-child(3) .left {
+    width: 37%;
+}
+.hotel_list_block .item_block:nth-child(3) .right {
+    width: 63%;
+}
+
+/* 第4个酒店 */
+.hotel_list_block .item_block:nth-child(4) .left {
+    width: 55%;
+}
+.hotel_list_block .item_block:nth-child(4) .right {
+    width: 45%;
+}
+
+/* 第5个酒店 */
+.hotel_list_block .item_block:nth-child(5) .left {
+    width: 100%;
+}
+
+/* 商品列表块 */
+.product_list_block {
+    margin-top: 2em;
+    width: 100%;
+}
+.product_list_block image {
+    width: 100%;
+    display: block;
+}
+.product_list_block .product_item {
+    margin-top: 8rpx;
+}
+
+/* 活动说明 */
+/* 表格 */
+.table {
+    display: table;
+}
+.table .tr {
+    display: table-row;
+}
+.table .td {
+    display: table-cell;
+}
+
+.activity_note_block {
+    font-size: 26rpx;
+    margin-top: 2em;
+}
+.activity_note_block .note_item {
+    padding: 1em 1em 0 1em;
+}
+.activity_note_block .note_item .title {
+    font-weight: 600;
+}
+.activity_note_block .note_item .table .tr .td:nth-child(1) {
+    width: 42%;
+}
+.activity_note_block .note_item .table .tr .td:nth-child(2),
+.activity_note_block .note_item .table .tr .td:nth-child(3) {
+    width: 29%;
+}
+.activity_note_block .note_item .table .tr .td {
+    text-align: center;
+}
+.activity_note_block .note_item .table {
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    background-color: #333;
+    color: #fff;
+    margin-top: 2em;
+}
+.activity_note_block .note_item .table .td {
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    vertical-align: middle;
+    padding: 16rpx;
+}
+.activity_note_block .note_item .table .td.price {
+    color: #FFED92;
+}
+
+/* 小程序码 */
+.minsu_app_block {
+    font-size: 26rpx;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2em 1em 234rpx 1em;
+    text-align: center;
+}
+.minsu_app_block image {
+    width: 100%;
+    vertical-align: top;
+}
+
+
+
+
+
+
+
+
+

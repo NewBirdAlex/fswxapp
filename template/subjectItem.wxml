@@ -1,0 +1,12 @@
+<import src="../template/horizontalItems.wxml" />
+<template name="subjectItem">
+  <view class="subject">
+    <navigator hover-class='none' url='/pages/category/category?fenceId={{homeModel.fence.fenceId}}&fenceName={{homeModel.fence.fenceName}}'>
+      <view class="subject-top">
+        <image class="subject-top-image" src="{{homeModel.fence.fenceImg}}"></image>
+        <image class="subject-top-arrow" mode="aspectFill" src="/assets/ic_mall_triangle.png"></image>
+      </view>
+    </navigator>
+   <template is="horizontalItems" data="{{...homeModel}}"/>
+  </view>
+</template>

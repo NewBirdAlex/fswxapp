@@ -1,0 +1,17 @@
+<template name='productMore'>
+    <navigator hover-class='none' data-fenceid="{{fenceId}}" url='/pages/category/category?fenceId={{fenceId}}&fenceName={{fenceName}}' bindtap='viewMore'>
+    <view class='product-item'>
+      <view class='product-image-holder'>
+        <image class='product-image' src="/assets/btn_mall_seemore_normal.png"></image>
+      </view>
+      <view class='product-title' style='visibility:hidden'>
+        <image class="product-title-image"  src='/assets/ic_mall_label_ziying.png'></image>
+        <view class='product-title-name' >sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</view>
+      </view>
+      <view class='product-price' style='visibility:hidden'>
+        <view class='new-price'>¥111</view>
+        <view class='old-price'>¥222</view>
+      </view>
+    </view>
+  </navigator>
+</template>

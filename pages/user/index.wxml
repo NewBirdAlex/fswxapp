@@ -1,0 +1,38 @@
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+
+<view class="top-contain">
+      <image class="top-img" src="{{userInfo?userInfo.avatarUrl:'/assets/default.png'}}"></image>
+      <view class="top-word">{{userInfo.nickName}}</view>
+</view>
+<view class="list list-one" id="0" bindtap='goPart'>
+      <image class="left-one" src="/assets/ic_54_order.png" id="0"></image>
+      <view class="middle" id="0">我的订单</view>
+      <image class="list-right" src="/assets/arrow-forward.png" id="0"></image>
+</view>
+ <view class="list" id="5" bindtap='goPart'>
+      <image class="list-right" src="/assets/ic_88_customservice_normal.png" id="4"></image>
+      <image class="left-one" src="/assets/ic_88_coupon_normal.png" id="5" style="width:88rpx;height:88rpx;margin-left:5rpx;"></image>
+      <view class="middle" id="5" style="margin-left:0rpx;">售后</view>
+      <image class="list-right" src="/assets/arrow-forward.png" id="4"></image>
+</view> 
+<view class="list" id="1" bindtap='goPart'>
+      <image class="left-one" src="/assets/ic_54_address.png" id="1"></image>
+      <view class="middle" id="1">收货地址</view>
+      <image class="list-right" src="/assets/arrow-forward.png" id="1"></image>
+</view>
+<view class="list" id="2" bindtap='goPart'>
+      <image class="left-one" src="/assets/ic_54_realname.png" id="2"></image>
+      <view class="middle" id="2">实名认证</view>
+      <image class="list-right" src="/assets/arrow-forward.png" id="2"></image>
+</view>
+<view class="list" id="3" bindtap='goPart'>
+      <image class="left-one" src="/assets/ic_88_giftcard_normal.png" id="3" style="width:88rpx;height:88rpx;margin-left:5rpx;"></image>
+      <view class="middle" id="3" style="margin-left:0rpx;">礼品卡</view>
+      <image class="list-right" src="/assets/arrow-forward.png" id="3"></image>
+</view>
+ <view class="list" id="4" bindtap='goPart'>
+      <image class="left-one" src="/assets/ic_88_coupon_normal.png" id="4" style="width:88rpx;height:88rpx;margin-left:5rpx;"></image>
+      <view class="middle" id="4" style="margin-left:0rpx;">卡券</view>
+      <image class="list-right" src="/assets/arrow-forward.png" id="4"></image>
+</view> 

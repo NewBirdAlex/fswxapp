@@ -1,0 +1,29 @@
+<import src="../../../components/toast/toast.wxml" />
+<import src="../../../components/recommend/recommend.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view>
+      <view class="sure-word">
+            <view>交易成功!</view>
+            <view>卖家将收到您的货款</view>
+      </view>
+      <image class="sure-img" src="/assets/getgoods.jpg"></image>
+</view>
+<view class="sure-bot">
+      <view class="sure-btn sure-color" id="1" bindtap='goEvaluation'>立即评价</view>
+      <view class="sure-btn" id="2" bindtap='goEvaluation'>订单详情</view>
+      <view></view>
+</view>
+
+
+<!-- 大家都在看  -->
+<view class="recommend-wrapper" style="margin-bottom:54px">
+      <template is="recommend" data="{{recommendData}}" />
+      <view class="clear"></view>
+      <view class="weui-loadmore" wx:if="{{isLoading}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+      </view>
+      <view class="weui-loadmore weui-loadmore_line" wx:if="{{noMoreData&&recommendData.length!=0}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line gray">没有更多</view>
+      </view>
+</view>

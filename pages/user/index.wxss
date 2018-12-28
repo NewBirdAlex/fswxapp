@@ -1,0 +1,49 @@
+/* pages/order/user/index.wxss */
+page{
+  background: #f7f7f7;
+}
+.top-contain{
+  height:280rpx;
+  background: #FFFFFF;
+  text-align: center;
+}
+.top-img{
+  width:150rpx;
+  height:150rpx;
+  border-radius: 50%;
+  margin-top:41rpx;
+}
+.top-word{
+  font-size: 28rpx;
+color: #4A4A4A;
+}
+.left-one{
+  width:54rpx;
+  height:54rpx;
+  margin-left:20rpx;
+}
+.middle{
+font-size: 28rpx;
+color: #4A4A4A;
+margin-left:14rpx;
+}
+.list-right{
+  width:16rpx;
+  height:25rpx;
+position: absolute;
+right: 30rpx;
+top: 32.5rpx;
+}
+.list{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height:88rpx;
+  background: #FFFFFF;
+  border-bottom:1rpx solid  #e4e4e4;
+  position: relative;
+}
+.list-one{
+  margin-top:20rpx;
+}

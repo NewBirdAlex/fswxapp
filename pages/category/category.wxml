@@ -1,0 +1,37 @@
+<import src="../../template/productItem.wxml" />
+<import src="../../components/toast/toast.wxml" />
+<import src="../../components/recommend/recommend.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="weui-tab">
+      <view class="weui-navbar" wx:if="{{categoryTagList}}">
+            <movable-area>
+                  <movable-view out-of-bounds="true" damping="30" x="{{scrollX}}" inertia="true" direction="horizontal" style='width:{{movableWidth+"rpx"}}'>
+                        <view id="-1" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" bindtap="tabClick">
+                              <view class="weui-navbar__title">全部</view>
+                        </view>
+                        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" wx:for="{{categoryTagList}}" bindtap="tabClick">
+                              <view class="weui-navbar__title">{{item.tagName}}</view>
+                        </view>
+                        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);width:150rpx;"></view>
+                  </movable-view>
+            </movable-area>
+      </view>
+      <view class="weui-tab_pannel" style='padding-top:{{categoryTagList?" padding-top: 110rpx":"0rpx"}}'>
+            <view class="weui-tab__content">
+                  <view class="flow">
+                        <block wx:for="{{flowData}}" wx:for-index="index">
+                              <view wx:if="{{index%2==0}}" class='flow-sides-space' />
+                              <view wx:else class='flow-center-space' />
+                              <view class='flow-item'>
+                                    <template is="productItem" data="{{...item}}" />
+                                    <view class="flow-divider" />
+                              </view>
+                              <view wx:if="{{index%2==1}}" class='flow-sides-space' />
+                        </block>
+                  </view>
+                  <view class="load-more" hidden='{{!hasMoreData}}'>
+                        <view>正在努力加载...</view>
+                  </view>
+            </view>
+      </view>
+</view>

@@ -1,0 +1,104 @@
+<!--index.wxml-->
+
+<import src="../../template/subjectItem.wxml" />
+<import src="../../template/productItem.wxml" />
+<import src="../../template/flashSale.wxml" />
+
+<button wx:if="{{showButton}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+<view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                  <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                  <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindfocus="searchTracker" />
+                  <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                  </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                  <icon class="weui-icon-search" type="search" size="14"></icon>
+                  <view class="weui-search-bar__text">搜索</view>
+            </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" bindtap="searchInput">搜索</view>
+</view>
+<block wx:for="{{mallHomeData}}" wx:for-item="homeModel" wx:for-index="index" wx:key="index">
+
+      <view wx:if="{{homeModel.fence.fenceType==13||homeModel.fence.fenceType==17}}" class="fence-title">
+            <image src='/assets/ic_42_timetobuy.png' class='fence-title-icon' />
+            <view>{{homeModel.fence.fenceName}}</view>
+      </view>
+
+      <!--banner  -->
+      <view wx:if="{{homeModel.fence.fenceType==9&&homeModel.data&&homeModel.data.length!=0}}" class="banner-holder">
+            <swiper class="banner" indicator-dots='{{swiper.indicatorDots}}' autoplay='{{swiper.autoPlay}}' circular='true' interval='{{swiper.interval}}' duration='{{swiper.duration}}'>
+                  <block wx:for='{{homeModel.data}}' wx:for-item="banner" wx:for-index="bindex" wx:key='index'>
+
+                        <swiper-item>
+                              <!-- <navigator hover-class='none' style="width:100%;height:100%" url='/pages/goodsDetail/index?spuId={{banner.spuId}}'> -->
+                               <view style="width:100%;height:100%" data-id="{{banner.componentId}}" data-jumptype="{{banner.jumpType}}" data-index="{{index}}" data-bindex="{{bindex}}" bindtap="swiperNavigation"> 
+                                    <view style="width:100%;height:100%">
+
+                                          <image src="{{banner.mediumHomeIcon}}" class="banner-item-image" />
+
+                                    </view>
+					</view>
+                              <!-- </navigator> -->
+                        </swiper-item>
+
+                  </block>
+            </swiper>
+      </view>
+      <!--导航专题  -->
+        <block wx:elif="{{homeModel.fence.fenceType==16}}">
+            <view class='flow'>
+                  <block wx:for="{{homeModel.data}}" wx:for-item="category" wx:for-index="index" wx:key="index">
+                        <navigator class="category-item" hover-class='none' bindtap="trackerChannel" url='/pages/category/category?fenceId={{category.fenceId}}&fenceName={{category.fenceName}}&category=true'>
+                              <view class="category-item" style="width:100%">
+                                    <image wx:if="{{index<4}}" class="category-icon-top" src='{{category.fenceIcon}}' />
+                                    <image wx:else class="category-icon" src='{{category.fenceIcon}}' />
+                                    <view class='category-name'>{{category.fenceName}}</view>
+
+                              </view>
+                        </navigator>
+                  </block>
+            </view>
+      </block>  
+
+      <!--限时抢购  -->
+      <template wx:elif="{{homeModel.fence.fenceType==17}}" is="flashSale" data="{{homeModel}}" />
+
+      <!--专题  -->
+      <template wx:elif="{{homeModel.fence.fenceType==20||homeModel.fence.fenceType==21}}" is="subjectItem" data="{{homeModel}}" />
+
+      <!--瀑布流  -->
+      <view wx:if="{{homeModel.fence.fenceType==13}}" class="flow">
+            <block wx:for="{{homeModel.data}}" wx:for-index="index" wx:key="index">
+                  <view wx:if="{{index%2==0}}" class='flow-sides-space' />
+                  <view wx:else class='flow-center-space' />
+                  <view class='flow-item'>
+                        <template is="productItem" data="{{...item}}" />
+                        <view class="flow-divider" />
+                  </view>
+                  <view wx:if="{{index%2==1}}" class='flow-sides-space' />
+            </block>
+      </view>
+      <!--灰色的分割线  -->
+      <view wx:if="{{homeModel.fence.fenceType!=13&&homeModel.fence.fenceType!=9}}" style='height:20rpx;background:#F7F7F7;' />
+</block>
+<view class="load-more" hidden='{{!hasMoreData}}'>
+      <view>正在努力加载...</view>
+</view>
+
+<!--豆腐块  -->
+<!-- <view style='position: relative; width:100%;height:0;padding-bottom:60.5333%;'>
+  <view style='position:absolute;width:50%;height:100%; background:red;'>
+      <navigator>
+        <image></image>
+      </navigator>
+  </view>
+  <view style='position:absolute;left:50%;width:50%;height:100%; '>
+    <view style='height:50%;background:blue;'></view>
+    <view style='height:50%;background:green;'></view>
+  </view>
+</view> -->
+<!-- </view>  -->

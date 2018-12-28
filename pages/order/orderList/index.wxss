@@ -1,0 +1,169 @@
+page {
+      background: #f7f7f7;
+}
+
+.weui-navbar__item {
+      padding: 20rpx 0;
+}
+
+.weui-navbar {
+      position: fixed;
+      background: #fff;
+}
+
+.items-list .price .font26 {
+      margin-left: 20rpx;
+}
+
+.weui-tab_pannel {
+      padding-top: 90rpx;
+}
+
+movable-area {
+      width: 750rpx;
+      height: 90rpx;
+}
+
+movable-view {
+      height: 90rpx;
+      width: 1050rpx;
+}
+
+.weui-navbar__item {
+      float: left;
+      width: 150rpx;
+}
+
+.first-tit {
+      height: 90rpx;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1rpx solid #e4e4e4;
+      border-top: 1rpx solid #e4e4e4;
+      font-size: 28rpx;
+      color: #4a4a4a;
+      padding-left: 20rpx;
+      padding-right: 20rpx;
+      background-color: #fff;
+}
+
+.tit-desc {
+      font-size: 22rpx;
+      color: #f93473;
+}
+
+.tit-img {
+      width: 21rpx;
+      height: 25rpx;
+      margin-left: 12rpx;
+}
+
+.good-contain {
+      display: flex;
+      flex-direction: row;
+      padding: 40rpx 0;
+      margin: 0 20rpx;
+}
+
+.good-all {
+      background-color: #fff;
+}
+
+.good-contain:last-of-type {
+      border-bottom: 1rpx solid #e4e4e4;
+}
+
+.good-right {
+      flex: 1;
+}
+
+.good-img {
+      width: 140rpx;
+      height: 140rpx;
+      margin-right: 20rpx;
+}
+
+.good-tit {
+      font-size: 26rpx;
+      color: #4a4a4a;
+      height: 72rpx;
+      overflow: hidden;
+}
+
+.good-many {
+      font-size: 22rpx;
+      color: #9b9b9b;
+}
+
+.good-num {
+      float: right;
+}
+
+.good-price {
+      font-size: 30rpx;
+      color: #f93473;
+}
+
+.good-price text {
+	font-size: 22rpx;
+	color: #9b9b9b;
+	text-decoration: line-through;
+	padding-left: 10rpx;
+}
+
+.good-pay {
+      height: 73rpx;
+      line-height: 73rpx;
+      text-align: right;
+      font-size: 26rpx;
+      color: #4a4a4a;
+      padding-right: 20rpx;
+      border-bottom: 1rpx solid #e4e4e4;
+      background-color: #fff;
+}
+
+.good-again {
+      /* height: 93rpx; */
+      font-size: 24rpx;
+      color: #4a4a4a;
+      border-bottom: 1rpx solid #e4e4e4;
+      background-color: #fff;
+      margin-bottom: 20rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+}
+
+.again-word {
+      height: 46rpx;
+      line-height: 46rpx;
+      border-radius: 30rpx;
+	border: 1rpx solid #e4e4e4;
+      text-align: center;
+      margin: 20rpx 20rpx 20rpx 0;
+	padding: 0 20rpx;
+	font-size: 24rpx;
+}
+
+.good-again .again-word-color {
+	 color: #f93473;
+      border: 1rpx solid #f93473;
+}
+
+.miss-block {
+      height: 514rpx;
+      background-color: #fff;
+}
+
+.miss-block .missimg {
+      width: 264rpx;
+      height: 294rpx;
+      margin-top: 47rpx;
+}
+
+.miss-block  .miss-word {
+      text-align: center;
+      margin-top: 42rpx;
+}

@@ -1,0 +1,18 @@
+<template name="recommend">
+      <view class="cpn-see">
+            <view class="cpn-see-title">大家都在看</view>
+            <view class="cpn-see-con">
+                  <view class="cpn-see-con-item" data-spuid="{{item.spuId}}" wx:for="{{recommendData}}" wx:key="{{index}}" bindtap="recommendToDetail">
+				<view class="cpn-see-con-l">
+					<image src="{{item.mediumHomeIcons[0]}}"></image>
+				</view>
+				<view class="cpn-see-con-r">
+					<view class="cpn-see-con-r-name">
+						<text>{{item.title}}</text>
+					</view>
+					<view class="cpn-see-con-r-price">￥{{item.goodsInfo.preferentialPrice}}<text>￥{{item.goodsInfo.oldPrice}}</text></view>
+				</view>
+			</view>
+            </view>
+      </view>
+</template>

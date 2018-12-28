@@ -1,0 +1,25 @@
+<import src="../../template/productItem.wxml" />
+<view class="flow">
+      <block wx:for="{{dataList}}" wx:for-index="index" wx:if="{{dataList.length!=0}}">
+            <view wx:if="{{index%2==0}}" class='flow-sides-space' />
+            <view wx:else class='flow-center-space' />
+            <view class='flow-item'>
+                  <template is="productItem" data="{{...item}}" />
+                  <view class="flow-divider" />
+            </view>
+            <view wx:if="{{index%2==1}}" class='flow-sides-space' />
+      </block>
+	<view wx:if="{{dataList.length==0}}" class="nothing">什么都没有哦！</view>
+</view>
+<!-- <view class="load-more" hidden='{{!hasMoreData}}'>
+      <view>正在努力加载...</view>
+</view> -->
+
+<view class="clear"></view>
+<view class="weui-loadmore" wx:if="{{isLoading}}">
+	<view class="weui-loading"></view>
+	<view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" wx:if="{{noMoreData&&recommendData.length!=0}}">
+	<view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多</view>
+</view>

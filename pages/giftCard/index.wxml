@@ -1,0 +1,116 @@
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<form>
+      <view class="page">
+            <view class="page__bd">
+                  <view class="weui-tab">
+                        <view class="weui-navbar">
+                              <block>
+                                    <view id="0" class="weui-navbar__item {{activeIndex == 0 ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                                          <view class="weui-navbar__title">可用（{{usableData?usableData.detailList.length:"0"}}）</view>
+                                    </view>
+                                    <view id="1" class="weui-navbar__item {{activeIndex == 1 ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                                          <view class="weui-navbar__title">不可用（{{disableData?disableData.detailList.length:"0"}}）</view>
+                                    </view>
+                                    <view id="2" class="weui-navbar__item {{activeIndex == 2 ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                                          <view class="weui-navbar__title">收支明细</view>
+                                    </view>
+                              </block>
+                              <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+                        </view>
+                        <view class="weui-tab__panel">
+                              <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                                    <view class="usable" wx:if="{{usableData}}">
+                                          <view class='usable_balance'>
+                                                <text>可用余额</text>
+                                                <text class="color">￥{{usableData.cardBalance}}</text>
+                                          </view>
+                                          <view class="usable_list">
+                                                <view class="usable_item" data-item='{{index}}' bindtap="chooseGiftCard" wx:for="{{usableData.detailList}}" wx:key="{{item}}">
+                                                      <image src="/assets/bg_giftcard_normal.png" class='usable_item_bg'></image>
+                                                      <view class="usable_item_t">
+                                                            <view class="usable_item_t_n">卡号：{{item.subCardNo}}</view>
+                                                            <view class="usable_item_t_e">余额
+                                                                  <text>￥{{item.subCardBalance}}</text>
+                                                            </view>
+                                                      </view>
+                                                      <view class="usable_item_b">
+                                                            <text>总额：￥{{item.subCardAmount}}</text>
+                                                            <text>有效期：{{item.subCardBeginTime}}至{{item.subCardEndTime}}</text>
+                                                      </view>
+									<image src="{{item.active?'/assets/ic_select_selected.png':'/assets/ic_select_normal.png'}}" class='check_box' wx:if="{{!hideCheck}}"></image>
+                                                </view>
+                                          </view>
+                                    </view>
+                                    <view class='no_data' wx:else>
+                                          <image src='/assets/ic_nothing.png'></image>
+                                          <text>很遗憾，你暂无可以使用的卡</text>
+                                    </view>
+                              </view>
+                              <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                                    <view class="usable" wx:if="{{disableData}}">
+                                          <view class='usable_balance'>
+                                                <text>可用余额</text>
+                                                <text class="color">￥{{disableData.cardBalance}}</text>
+                                          </view>
+                                          <view class="disable_list">
+                                                <view class="usable_item" bindtap="chooseGiftCard" wx:for="{{disableData.detailList}}" wx:key="{{item}}">
+                                                      <image src="/assets/bg_giftcard_disable.png" class='usable_item_bg'></image>
+                                                      <view class="usable_item_t">
+                                                            <view class="usable_item_t_n">卡号：{{item.subCardNo}}</view>
+                                                            <view class="usable_item_t_e">余额
+                                                                  <text>￥{{item.subCardBalance}}</text>
+                                                                  <label wx:if="{{item.subCardStatus==0}}">未使用</label>
+                                                                  <label wx:if="{{item.subCardStatus==1}}">部分使用</label>
+                                                                  <label wx:if="{{item.subCardStatus==2}}">已使用</label>
+                                                                  <label wx:if="{{item.subCardStatus==3}}">已过期</label>
+                                                                  <label wx:if="{{item.subCardStatus==4}}">无效</label>
+                                                                  <label wx:if="{{item.subCardStatus==5}}">冻结</label>
+                                                            </view>
+                                                      </view>
+                                                      <view class="usable_item_b">
+                                                            <text>总额：￥{{item.subCardAmount}}</text>
+                                                            <text>有效期：{{item.subCardBeginTime}}至{{item.subCardEndTime}}</text>
+                                                      </view>
+                                                      <!-- <img :src="item.active?ic_select_selected:ic_select_normal" alt="" v-if="showCheckbox" /> -->
+                                                </view>
+                                          </view>
+                                    </view>
+                                    <view class='no_data' wx:else>
+                                          <image src='/assets/ic_nothing.png'></image>
+                                          <text>很遗憾，你暂无可以使用的卡</text>
+                                    </view>
+                              </view>
+                              <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                                    <view class="sum" wx:if="{{recordData}}">
+                                          <view class="gift_sum">
+                                                <label>礼品卡总额</label>
+                                                <text>￥{{recordData&&recordData.cardAmount?recordData.cardAmount:"0.00"}}</text>
+                                          </view>
+                                          <view class="total_sum">
+                                                <label>支出总额</label>
+                                                <text>￥{{recordData&&recordData.outAmount?recordData.outAmount:"0.00"}}</text>
+                                          </view>
+                                    </view>
+                                    <view class='record'>
+                                          <view class="record_con_list" wx:for="{{recordData.groupList}}" wx:if="{{recordData&&recordData.groupList}}" wx:key="{{item}}">
+                                                <view class="record_con_list_slot">{{item.logDate}}</view>
+                                                <view class="record_con_item" wx:for="{{item.logList}}" wx:for-item="sitem" wx:key="{{sitem}}">
+                                                      <view class="record_con_list_left">
+                                                            <text>{{sitem.inoutType==1?'收入':'消费'}}</text>
+                                                            <text>{{sitem.updateTime}}</text>
+                                                      </view>
+                                                      <view class="record_con_list_right">
+                                                            <text class="cen_p" style="{{sitem.inoutType==1?'color: #04C5B4;':'' }}">{{sitem.inoutType==1?'':'-'}}{{sitem.inout}}</text>
+                                                            <text class="cen_t">礼品卡</text>
+                                                      </view>
+                                                </view>
+                                          </view>
+                                    </view>
+                              </view>
+                              <button class="bindNewCard" bindtap='bindNewCard'>绑定新卡</button>
+                        </view>
+                  </view>
+            </view>
+      </view>
+</form>

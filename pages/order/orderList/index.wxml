@@ -1,0 +1,144 @@
+<import src="../../../components/toast/toast.wxml" />
+<import src="../../../components/recommend/recommend.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="page">
+      <view class="weui-tab">
+            <view class="weui-navbar">
+                  <movable-area>
+                        <movable-view out-of-bounds="true" damping="30" x="{{scrollX}}" inertia="true" direction="horizontal">
+                              <view id="-1" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" bindtap="tabClick">
+                                    <view class="weui-navbar__title">全部</view>
+                              </view>
+                              <view id="0" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" bindtap="tabClick">
+                                    <view class="weui-navbar__title">待付款</view>
+                              </view>
+                              <view id="1" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" bindtap="tabClick">
+                                    <view class="weui-navbar__title">待发货</view>
+                              </view>
+                              <view id="2" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" bindtap="tabClick">
+                                    <view class="weui-navbar__title">待收货</view>
+                              </view>
+                              <view id="3" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" bindtap="tabClick">
+                                    <view class="weui-navbar__title">已完成</view>
+                              </view>
+                              <view id="6" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" bindtap="tabClick">
+                                    <view class="weui-navbar__title">待评价</view>
+                              </view>
+                              <view id="4" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on':''}}" bindtap="tabClick">
+                                    <view class="weui-navbar__title">已取消</view>
+                              </view>
+                              <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);width:150rpx;"></view>
+                        </movable-view>
+                  </movable-area>
+            </view>
+            <view class="weui-tab_pannel">
+                  <view class="weui-tab__content">
+                        <block wx:for="{{dataList}}" wx:key="{{item}}" wx:if='{{!noData}}'>
+                              <view wx:if="{{item.isSubOrder}}">
+                                    <view class="first-tit">
+                                          <view class="tit-word">丰盛榜健康城</view>
+                                          <view class="tit-desc" wx:if="{{item.ordStatus==4}}" data-item="{{item}}" data-type="1" bindtap="deleteOrder">交易关闭
+                                                <image class="tit-img" src='/assets/address2.png'></image>
+                                          </view>
+                                          <view class="tit-desc" wx:elif="{{item.ordStatus==3}}" data-item="{{item}}" data-type="1" bindtap="deleteOrder">交易成功
+                                                <image class="tit-img" src='/assets/address2.png'></image>
+                                          </view>
+                                          <view class="tit-desc" wx:elif="{{item.ordStatus==0}}">等待买家付款</view>
+                                          <view class="tit-desc" wx:elif="{{item.ordStatus==1}}">等待发货</view>
+                                          <view class="tit-desc" wx:elif="{{item.ordStatus==2}}">等待收货</view>
+                                          <view class="tit-desc" wx:elif="{{item.ordStatus==5}}">售后</view>
+                                    </view>
+                                    <view class="good-all">
+                                          <view class="good-contain" wx:for="{{item.orderDetailList}}" wx:for-item="sitem" wx:key="{{sitem}}" data-item="{{item}}" data-type="1" bindtap="goOrderDetail">
+                                                <image class="good-img" src="{{sitem.detailSpu.spuPic}}"></image>
+                                                <view class="good-right">
+                                                      <view class="good-tit">{{sitem.detailSpu.spuName}}</view>
+                                                      <view class="good-many">
+                                                            {{sitem.detailSku.skuName}}
+                                                            <text class="good-num">x{{sitem.ordSkuNum}} </text>
+                                                      </view>
+                                                      <view class="good-price">￥{{sitem.ordOriginal-sitem.ordDiscount/sitem.ordSkuNum}}
+                                                            <text wx:if="{{sitem.ordDiscount!=0}}">{{sitem.ordOriginal}}</text>
+                                                      </view>
+                                                </view>
+                                          </view>
+                                    </view>
+                                    <view class="good-pay">共{{item.orderProductCount}}件商品 合计：￥{{item.ordActAmount>0?item.ordActAmount:0}}
+                                          <template wx:if="{{item.ordTransportAmount!=0}}">(含运费￥{{item.ordTransportAmount}})</template>
+                                    </view>
+                                    <view class="good-again">
+                                          <button plain="true" formType="submit" class="again-word again-word-color" wx:if="{{item.ordStatus==0}}" data-orsid="{{item.orsId}}" data-index="{{index}}" bindtap="goPay">付款</button>
+                                          <button plain="true" formType="submit" class="again-word" wx:if="{{item.ordStatus==0}}" data-item="{{item}}" data-index='{{index}}' bindtap="cancelOrder">取消订单</button>
+                                          <button plain="true" formType="submit" class="again-word" wx:if="{{item.ordStatus==2||item.ordStatus==3}}" data-item="{{item}}" bindtap="goLogisticsDetail">查看物流</button>
+                                          <button plain="true" formType="submit" class="again-word" wx:if="{{item.ordStatus==2}}" data-item="{{item}}" bindtap='makeSure'>确认收货</button>
+                                          <button plain="true" formType="submit" class="again-word" wx:if="{{item.ordStatus==3&&item.orderDetailList[0].ordCommentStatus!=1}}" data-item="{{item}}" bindtap="goComment">评价</button>
+                                          <button plain="true" formType="submit" class="again-word" wx:if="{{item.ordStatus==3&&item.orderDetailList[0].ordCommentStatus!=0}}" bindtap="goCommentList">查看评论</button>
+                                          <button plain="true" formType="submit" class="again-word again-word-color" wx:if="{{item.ordStatus==3||item.ordStatus==4}}" data-item="{{item}}" data-type="1" bindtap="buyAgain">再次购买</button>
+                                    </view>
+                              </view>
+                              <view wx:if="{{!item.isSubOrder}}">
+                                    <view class="first-tit">
+                                          <view class="tit-word">丰盛榜健康城</view>
+                                          <view class="tit-desc" wx:if="{{item.orderSubList[0].ordStatus==4}}" data-item="{{item}}" data-type="2" bindtap="deleteOrder">交易关闭
+                                                <image class="tit-img" src='/assets/address2.png'></image>
+                                          </view>
+                                          <view class="tit-desc" wx:elif="{{item.orderSubList[0].ordStatus==3}}" data-item="{{item}}" data-type="2" bindtap="deleteOrder">交易成功
+                                                <image class="tit-img" src='/assets/address2.png'></image>
+                                          </view>
+                                          <view class="tit-desc" wx:elif="{{item.orderSubList[0].ordStatus==0}}">等待买家付款</view>
+                                          <view class="tit-desc" wx:elif="{{item.orderSubList[0].ordStatus==1}}">等待发货</view>
+                                          <view class="tit-desc" wx:elif="{{item.orderSubList[0].ordStatus==2}}">等待收货</view>
+                                          <view class="tit-desc" wx:elif="{{item.orderSubList[0].ordStatus==5}}">售后
+                                                <image class="tit-img" src='/assets/address2.png'></image>
+                                          </view>
+                                    </view>
+                                    <view class="good-all">
+                                          <block wx:for="{{item.orderSubList}}" wx:for-item="sitem" wx:key="{{sitem}}">
+                                                <view class="good-contain" wx:for="{{sitem.orderDetailList}}" wx:for-item="spuItem" wx:key="{{spuItem}}" data-item="{{item}}" data-type="2" bindtap="goOrderDetail">
+                                                      <image class="good-img" src="{{spuItem.detailSpu.spuPic}}"></image>
+                                                      <view class="good-right">
+                                                            <view class="good-tit">{{spuItem.detailSpu.spuName}}</view>
+                                                            <view class="good-many">
+                                                                  {{spuItem.detailSku.skuName}}
+                                                                  <text class="good-num">x{{spuItem.ordSkuNum}} </text>
+                                                            </view>
+                                                            <view class="good-price">￥{{spuItem.ordOriginal-spuItem.ordDiscount/spuItem.ordSkuNum}}
+                                                                  <text wx:if="{{spuItem.ordDiscount!=0}}">{{spuItem.ordOriginal}}</text>
+                                                            </view>
+                                                      </view>
+                                                </view>
+                                          </block>
+                                    </view>
+                                    <view class="good-pay">共{{item.orderProductCount}}件商品 合计：￥{{item.orsOpenPay>0?item.orsOpenPay:0}}
+                                          <template wx:if="{{item.orsExpressFee!=0}}">(含运费￥{{item.orsExpressFee}})</template>
+                                    </view>
+                                    <view class="good-again">
+                                          <button plain="true" formType="submit" class="again-word" wx:if="{{item.orderSubList[0].ordStatus==0}}" data-item="{{item}}" data-index='{{index}}' bindtap="cancelOrder">取消订单</button>
+                                          <button plain="true" formType="submit" class="again-word again-word-color" wx:if="{{item.orderSubList[0].ordStatus==0}}" data-orsid="{{item.orsId}}" data-index="{{index}}" bindtap="goPay">付款</button>
+                                          <button plain="true" formType="submit" class="again-word again-word-color" wx:if="{{item.orderSubList[0].ordStatus==4}}"  data-item="{{item}}" data-type="2" bindtap="buyAgain">再次购买</button>
+                                    </view>
+                              </view>
+                        </block>
+                        <block wx:if='{{!noData}}'>
+                              <view class="clear"></view>
+                              <view class="weui-loadmore" wx:if="{{isLoading}}">
+                                    <view class="weui-loading"></view>
+                                    <view class="weui-loadmore__tips">正在加载</view>
+                              </view>
+                              <view class="weui-loadmore weui-loadmore_line" wx:if="{{noMoreData&&dataList.length!=0}}">
+                                    <view class="weui-loadmore__tips weui-loadmore__tips_in-line gray">没有更多</view>
+                              </view>
+                        </block>
+                        <block wx:if='{{noData}}'>
+                              <view class='noData miss-block'>
+                                    <image src="/assets/miss.jpg" class="missimg" />
+                                    <view class="miss-word">
+                                          <view>您还有没有相关订单~</view>
+                                          <view>可以去看看有哪些想买的</view>
+                                    </view>
+                              </view>
+                        </block>
+                  </view>
+            </view>
+      </view>
+</view>

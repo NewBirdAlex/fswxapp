@@ -1,0 +1,152 @@
+<!--pages/afterSales/detail/index.wxml-->
+<import src="../../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<import src="../../../template/afterSalesItem.wxml" />
+<view class="page">
+  <view class="status_wait" wx:if="{{refund.orrRefundStatus==4}}">
+    <image mode='widthFix' src="../../../assets/ic_wait_normal.png"></image>
+    <text>{{refund.orrRefundResult}}</text>
+  </view>
+
+  <view wx:if='{{refund.orrRefundStatus==1}}' style='margin-top:20rpx;background:white;'>
+    <!-- <view  style='margin-top:20rpx;background:white;'> -->
+    <view class='refund-info-title'>
+      您已成功发起退款申请，请耐心等待商家处理
+    </view>
+    <view class='viewider' />
+    <view style='font-size:22rpx;color:#999999;padding:20rpx 0 30rpx 30rpx;'>
+      <view>商家同意，系统将退款给您。</view>
+      <view>如果商家拒绝，请联系客服沟通，重新处理。</view>
+    </view>
+    <view class="rg_btn">
+      <view class="fr" bindtap='opetate(1)'>修改申请</view>
+      <view class="fr" bindtap='opetate(2)'>撤销申请</view>
+    </view>
+  </view>
+
+  <view wx:if='{{refund.orrRefundStatus==6}}' style='margin-top:20rpx;background:white;'>
+    <view class='refund-info-title'>
+      商家已撤销本次退款申请，如问题仍未解决，售后保障期内，您可以重新发起售后申请
+    </view>
+  </view>
+  <!--有物流单号  -->
+  <view class="msg" wx:if="{{refund.orrLogiName}}">
+    <view class="msg_title">
+      <image wx:if="{{refund.memberImg}}" src="{{refund.memberImg}}" alt=""></image>
+      <text>{{refund.memberNickname}}</text>
+      <text class="fr gray">{{refund.expressTime}}</text>
+    </view>
+    <view class="msg_state gray">
+      <view class="refund_item">
+        <view class="left">物流单号</view>
+        <view class="right">{{refund.orrLogiName}}
+          <text class="changeBtn" bindtap="inputExpred">修改</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 公司地址 -->
+  <view class="msg" style='margin-bottom:20rpx;'>
+    <view class="msg_title">
+      <image src="../../../assets/deer.png" alt=""></image>
+      <text>丰盛榜商城</text>
+      <text class="fr gray">{{refund.auditTime}}</text>
+    </view>
+    <view class="msg_state gray" wx:if="{{refund.orrRefundStatus==4}}">
+      <view class="refund_item">
+        <view class="left">申请结果:</view>
+        <view class="right">{{refund.orrRefundResult}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">原 因:</view>
+        <view class="right">{{refundDes[0].keyValue}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">退款说明：</view>
+        <view class="right">{{refund.orrServiceRemark}}</view>
+      </view>
+      <view class="rg_btn">
+
+        <view class="fr" bindtap='opetate' data-index ="1">再次申请</view>
+      </view>
+    </view>
+    <view class="msg_state gray" wx:else>
+      <view class="refund_item">
+        <view class="left">申请结果:</view>
+        <view class="right">{{refund.orrRefundStatus==4?"拒绝退款":"同意退款"}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">快递地址:</view>
+        <view class="right">{{refundAddress[0].keyValue}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">退款说明:</view>
+        <view class="right">{{refund.orrServiceRemark}}</view>
+      </view>
+    </view>
+    <view class="rg_btn" wx:if="{{refund.orrRefundStatus==1}}">
+
+      <view class="fr" bindtap='opetate' data-index ="1">修改申请</view>
+
+      <view class="fr" bindtap='opetate' data-index ="2">撤销申请</view>
+    </view>
+  </view>
+
+  <view style='background:white;'>
+    <view class="msg_title">
+      <image wx:if="{{refund.memberImg}}" src="{{refund.memberImg}}" mode='widthFix' alt=""></image>
+      <text>{{refund.memberNickname}}</text>
+      <text class="fr gray">{{refund.orrCreatedTime}}</text>
+    </view>
+    <view class='viewider' />
+    <!-- <template is="afterSalesItem" data="{{...product}}" /> -->
+    <view class='good-info good-info-extra'>
+
+      <view class="refund_item">
+        <view class="left">退款说明:</view>
+        <view class="right">{{refund.orrClientRemark}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">退款金额：</view>
+        <view class="right">¥{{refund.orrActTotalAmount}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">申请时间：</view>
+        <view class="right">¥{{refund.orrCreatedTime}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">退款编号：</view>
+        <view class="right">¥{{refund.orrOrstNo}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">退款类型：</view>
+        <view class="right">¥{{refund.orrRefundType==1?"仅退款":"退货退款"}}</view>
+      </view>
+      <view class="refund_item">
+        <view class="left">退款原因：</view>
+        <view class="right">¥{{refund.refundReasonString}}</view>
+      </view>
+    </view>
+    <view class='con_btn' style='display:flex;flex-direction:row-reverse;'>
+      <button class='contact' open-type='contact' plain='true'>联系客服</button>
+    </view>
+  </view>
+</view>
+
+<view class="inputExpred" wx:if="{{!refund.orrLogiName&&refund.orrRefundStatus!=4}}">
+  <view class="gray">请将商品快递至商家，并填写物流单号</view>
+  <view class="submit" bindtap="inputExpred">填写物流单号</view>
+</view>
+
+<view class='mask' wx:if="{{showMask}}">
+  <view class='container'>
+    <view class='m_t gray'>输入物流单号</view>
+    <view>
+      <input placeholder="输入物流单号" type="number" value='{{expNumber}}' bindinput='getInputNumber' />
+    </view>
+    <view class='opr'>
+      <view class='cancel' bindtap='changeMask' data-opr="1">取消</view>
+      <view class='confirm red' bindtap='changeMask' data-opr="2">确定</view>
+    </view>
+  </view>
+</view>

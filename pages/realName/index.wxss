@@ -1,0 +1,109 @@
+page {
+      background-color: #f7f7f7;
+}
+
+.add-real {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 88rpx;
+      left: 0;
+      background: #4bc6b1;
+      font-size: 34rpx;
+      color: #fff;
+      text-align: center;
+      line-height: 88rpx;
+      border-radius: unset;
+}
+
+.add-real::after {
+      border-radius: unset;
+}
+
+.no-data {
+      width: 100%;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+}
+
+.no-data .no-data-img {
+      margin-bottom: 20rpx;
+}
+
+.no-data .no-data-img image {
+      width: 202rpx;
+      height: 202rpx;
+}
+
+.no-data .no-data-text {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-top: 20rpx;
+}
+
+.no-data .no-data-text text {
+      font-size: 26rpx;
+      color: #333;
+}
+
+.list {
+      width: 100%;
+	padding-bottom: 100rpx;
+}
+
+.item {
+      width: 100%;
+      background-color: #fff;
+      border-bottom: 1rpx solid #e4e4e4;
+      border-top: 1rpx solid #e4e4e4;
+	margin-top: 20rpx;
+}
+
+.item-name {
+	margin: 20rpx 0;
+}
+
+.item-name, .item-identity {
+      font-size: 28rpx;
+      color: #333;
+      padding: 0 20rpx;
+}
+
+.item-pic {
+      margin: 20rpx 0;
+      padding: 0 20rpx;
+}
+
+.item-pic image {
+      width: 180rpx;
+      height: 114rpx;
+	padding-right: 20rpx;
+}
+
+.item-actions {
+      height: 88rpx;
+      border-top: 1rpx solid #e4e4e4;
+      padding: 0 20rpx 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.item-actions-l image, .item-actions-r image {
+      width: 40rpx;
+      height: 40rpx;
+      vertical-align: middle;
+      padding: 0 20rpx;
+}
+
+.item-actions-l text, .item-actions-r text {
+      font-size: 24rpx;
+      color: #333;
+}

@@ -1,0 +1,23 @@
+<view class="top-contain">
+      <view class="img-contain">
+            <image class="top-img" src="http://img1.fshtop.com/1508929425738.jpg"></image>
+      </view>
+      <view>坚持写有图评价的小伙伴，运气都不会太差哦~</view>
+</view>
+<view class="adv">
+      <image class="big-img" src="http://img1.fshtop.com/1508929720748.jpeg"></image>
+</view>
+<view class="more-eva" wx:if="{{hiddenEva}}">—— 接着评下去吧 ——</view>
+<block wx:for="{{goodList}}" wx:for-item="firstItem">
+      <view wx:for="{{firstItem.orderSubList}}" wx:for-item="secondItem">
+            <view wx:for="{{secondItem.orderDetailList}}" wx:for-item="thirdItem">
+                  <view class="eva-part">
+                        <view class="good-img">
+                              <image class="good-draw" src="{{thirdItem.detailSpu.spuPic}}"></image>
+                        </view>
+                        <view class="good-tit">{{thirdItem.detailSpu.spuName}}</view>
+                        <view class="go-eva" bindtap='goEvaluation' data-item="{{thirdItem}}">去评价</view>
+                  </view>
+            </view>
+      </view>
+</block>

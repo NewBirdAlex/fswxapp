@@ -1,0 +1,35 @@
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+
+<view class="container">
+      <view class="no-data" wx:if="{{dataList.length==0}}">
+            <view class="no-data-img">
+                  <image src="/assets/ic_authentication.png"></image>
+            </view>
+            <view class="no-data-text">
+                  <text> 你还没实名认证信息哦~</text>
+                  <text> 为了能顺利下单，请添加一个吧！</text>
+            </view>
+      </view>
+      <view class="list" wx:if="{{dataList.length!=0}}">
+            <view class="item" wx:for="{{dataList}}">
+			<view class="item-name">{{item.mrnName}}</view>
+			<view class="item-identity">{{item.mrnIdentity}}</view>
+			<view class="item-pic">
+				<image src="{{item.mrnFrontIcon}}" data-index="{{index}}" data-src="{{item.mrnFrontIcon}}" bindtap="previewImage" wx:if="{{item.mrnFrontIcon}}"></image>
+				<image src="{{item.mrnBackIcon}}" data-index="{{index}}" data-src="{{item.mrnBackIcon}}" bindtap="previewImage" wx:if="{{item.mrnBackIcon}}"></image>
+			</view>
+			<view class="item-actions">
+				<view class="item-actions-l" data-index="{{index}}" data-mrnid="{{item.mrnId}}" bindtap="setDefault">
+					<image src="{{item.active?'/assets/Check_selected@2x.png':'/assets/Check_normal@2x.png'}}"></image>
+					<text>账户默认实名人</text>
+				</view>
+				<view class="item-actions-r" data-mrnid="{{item.mrnId}}" data-index="{{index}}" bindtap="deleteIdentity">
+					<image src="/assets/ic_32_delete_normal.png"></image>
+					<text>删除</text>
+				</view>
+			</view>
+            </view>
+      </view>
+      <button class="add-real" bindtap="addRealName">+新增实名信息</button>
+</view>

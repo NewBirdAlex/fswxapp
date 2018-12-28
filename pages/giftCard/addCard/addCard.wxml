@@ -1,0 +1,10 @@
+<import src="../../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<form>
+	<view class='card'>
+		<label>礼品卡密码：</label>
+		<input placeholder="请输入21位礼品卡密码" bindinput="cardInPsw"></input>
+	</view>
+	<view class='state'> <text>*</text> 礼品卡自绑定／使用起3年有效</view>
+	<button class='add' hover-class='add_h' bindtap='addCard'>立即绑定</button>
+</form>

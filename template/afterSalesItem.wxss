@@ -1,0 +1,60 @@
+.good {
+  padding-right: 30rpx;
+  display: flex;
+  margin: 0;
+  background: white;
+}
+
+.good-image {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 20rpx 13rpx 0 22rpx;
+  border: 0.5rpx solid #e6e6e6;
+}
+
+.good-right {
+  flex: 1;
+}
+
+.good-name {
+  color: #4a4a4a;
+  font-size: 26rpx;
+  height: 74rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  margin-bottom: 14rpx;
+  margin-top: 14rpx;
+}
+
+.good-info {
+  color: #999;
+  font-size: 22rpx;
+}
+
+.good-num {
+  color: #999;
+  font-size: 22rpx;
+  float: right;
+}
+.good-operation {
+  color: #ff4882;
+  font-size: 24rpx;
+  width: 191rpx;
+  height: 55rpx;
+  border: 2rpx solid #ff4882;
+  border-radius: 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 19rpx;
+
+}
+
+.good-operation-status {
+  font-size: 24rpx;
+  color: #ccc;
+  margin-top: 30rpx;
+}

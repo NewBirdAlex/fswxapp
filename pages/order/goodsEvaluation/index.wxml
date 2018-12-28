@@ -1,0 +1,72 @@
+<block wx:for="{{goodAll}}" wx:for-index="creIndex">
+      <view class="good-contain">
+            <view>
+                  <image class="good-img" src="{{item.detailSpu.spuPic}}"></image>
+            </view>
+            <view>
+                  <view class="good-tit">{{item.detailSpu.spuName}}</view>
+                  <view class="star-good">
+                        <view class="star-contain" bindtap="storeGoodStar" data-item="{{item}}" data-index="{{creIndex}}" wx:for="{{item.starNum}}" wx:for-index="starIndex">
+                              <image class="star" id="{{starIndex}}" src="/assets/stae_selected@2x.png"></image>
+                        </view>
+                        <view class="star-contain" bindtap="storeStarGrey" data-item="{{item}}" data-index="{{creIndex}}" wx:for="{{5 - item.starNum}}" wx:for-index="starIndex2">
+                              <image class="star" id="{{starIndex2}}" src="/assets/collect.png"></image>
+                        </view>
+                  </view>
+            </view>
+      </view>
+      <view class="eva">
+            <textarea placeholder-class="pla" maxlength="200" bindinput="bindCommnet" data-item="{{item}}" data-index="{{creIndex}}" class="eva-content" placeholder="亲，您的评价能帮助其他小伙伴哟~" auto-focus bindfocus="trackerText" />
+      </view>
+      <view class="add-part">
+            <view class="add-all" wx:for="{{item.image}}" wx:for-item="deleteItem" wx:for-index="defaultIndex">
+                  <view class="delete" catchtap='deleteImage' data-item="{{item}}" data-index="{{creIndex}}" id="{{defaultIndex}}">
+                        <image class="add-close" src="/assets/close_normal@2x.png"></image>
+                  </view>
+                  <image class="add-img" src="{{deleteItem}}"></image>
+            </view>
+            <view class="add" bindtap='onAddPic' data-item="{{item}}" data-index="{{creIndex}}" wx:if="{{item.hideAdd}}">
+                  <view>
+                        <image class="add-camera" src="/assets/camera.png"></image>
+                  </view>
+                  <view class="add-word">添加图片</view>
+            </view>
+      </view>
+      <view class="check-contain">
+            <image class="check" bindtap='chooseDefault' data-item="{{item}}" data-index="{{creIndex}}" wx:if="{{item.active==0}}" src="/assets/Check_normal@2x.png"></image>
+            <image class="check" bindtap='chooseDefault' data-item="{{item}}" data-index="{{creIndex}}" wx:if="{{item.active==1}}" src="/assets/Check_selected@2x.png"></image>
+            <view class="check-word">匿名评价</view>
+      </view>
+</block>
+
+<view class="score">店铺评分</view>
+<view class="score-part">
+      <view>描述相符</view>
+      <view wx:for="{{descriptiveStar}}">
+            <image class="star-two" id="{{index+1}}" bindtap="storeScoreOne" src="/assets/stae_selected@2x.png"></image>
+      </view>
+      <view wx:for="{{5 - descriptiveStar}}">
+            <image class="star-two" id="{{index+1+descriptiveStar}}" bindtap="storeScoreOne" src="/assets/collect.png"></image>
+      </view>
+</view>
+<view class="score-part">
+      <view>物流服务</view>
+      <view wx:for="{{logisticsStar}}">
+            <image class="star-two" id="{{index+1}}" bindtap="storeScoretwo" src="/assets/stae_selected@2x.png"></image>
+      </view>
+      <view wx:for="{{5 - logisticsStar}}">
+            <image class="star-two" id="{{index+1+logisticsStar}}" bindtap="storeScoretwo" src="/assets/collect.png"></image>
+      </view>
+</view>
+<view class="score-part">
+      <view>服务态度</view>
+      <view wx:for="{{serviceStar}}">
+            <image class="star-two" id="{{index+1}}" bindtap="storeScorethree" src="/assets/stae_selected@2x.png"></image>
+      </view>
+      <view wx:for="{{5 - serviceStar}}">
+            <image class="star-two" id="{{index+1+serviceStar}}" bindtap="storeScorethree" src="/assets/collect.png"></image>
+      </view>
+</view>
+<view class="last-dev">
+      <view class="dev" bindtap="comment">发表评价</view>
+</view>

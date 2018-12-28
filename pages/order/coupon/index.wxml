@@ -1,0 +1,222 @@
+<import src="../../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="tab">
+  <view id="0" bindtap='goChoosed' class="{{sureChoosed==0?'choosed':'tab-one'}}"  >未使用</view>
+  <view id="1" bindtap='goChoosed'   class="{{sureChoosed==1?'choosed':'tab-one'}}" >已使用</view>
+  <view id="2" bindtap='goChoosed'  class="{{sureChoosed==2?'choosed':'tab-one'}}" >已失效</view>
+</view>
+<!-- 优惠券 -->
+<block wx:if="{{sureChoosed==0}}">
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <text class="icon">￥</text>20</view>
+      <image class="coup-draw" src="/assets/coupon2_normal@2x.png"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-down.png"></image>
+          </view>
+          <view class="top-user">立即使用</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <view>
+          <text class="icon">￥</text>20</view>
+        <view class="over">满99可用</view>
+      </view>
+      <image class="coup-draw" src="/assets/coupon2_normal@2x.png"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-down.png"></image>
+          </view>
+          <view class="top-user">立即使用</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <text class="icon">￥</text>20</view>
+      <image class="coup-draw" src="/assets/coupon2_normal@2x.png"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-top.png"></image>
+          </view>
+          <view class="top-user">立即使用</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-des">全场任意购满500元商品均可使用，不限品类。 </view>
+</block>
+<!-- 优惠券已使用 -->
+<block wx:if="{{sureChoosed==1}}">
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <text class="icon">￥</text>20</view>
+      <image class="coup-draw" src="/assets/grey.jpg"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-down.png"></image>
+          </view>
+        </view>
+      </view>
+      <view>
+        <image class="use" src="/assets/used.jpg"></image>
+      </view>
+    </view>
+
+  </view>
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <view>
+          <text class="icon">￥</text>20</view>
+        <view class="over">满99可用</view>
+      </view>
+      <image class="coup-draw" src="/assets/grey.jpg"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-down.png"></image>
+          </view>
+        </view>
+      </view>
+      <view>
+        <image class="use" src="/assets/used.jpg"></image>
+      </view>
+    </view>
+  </view>
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <text class="icon">￥</text>20</view>
+      <image class="coup-draw" src="/assets/grey.jpg"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-top.png"></image>
+          </view>
+        </view>
+      </view>
+      <view>
+        <image class="use" src="/assets/used.jpg"></image>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-des">全场任意购满500元商品均可使用，不限品类。 </view>
+</block>
+<!-- 优惠券已失效 -->
+<block wx:if="{{sureChoosed==2}}">
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <text class="icon">￥</text>20</view>
+      <image class="coup-draw" src="/assets/grey.jpg"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-down.png"></image>
+          </view>
+        </view>
+      </view>
+      <view>
+        <image class="use" src="/assets/unuse.jpg"></image>
+      </view>
+    </view>
+
+  </view>
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <view>
+          <text class="icon">￥</text>20</view>
+        <view class="over">满99可用</view>
+      </view>
+      <image class="coup-draw" src="/assets/grey.jpg"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-down.png"></image>
+          </view>
+        </view>
+      </view>
+      <view>
+        <image class="use" src="/assets/unuse.jpg"></image>
+      </view>
+    </view>
+  </view>
+  <view class="contain">
+    <view class="coup-img">
+      <view class="yuan">
+        <text class="icon">￥</text>20</view>
+      <image class="coup-draw" src="/assets/grey.jpg"></image>
+    </view>
+    <view class="coup-right">
+      <view>
+        <view class="top-word">体脂秤专享20元</view>
+        <view class="top-time">有效期：2017.09.28至2017.10.05 </view>
+        <view class="last-all">
+          <view class="top-info">详细信息</view>
+          <view class="top-info">
+            <image class="arrow" src="/assets/arrow-top.png"></image>
+          </view>
+        </view>
+      </view>
+      <view>
+        <image class="use" src="/assets/unuse.jpg"></image>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-des">全场任意购满500元商品均可使用，不限品类。 </view>
+</block>

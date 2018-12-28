@@ -1,0 +1,76 @@
+<!--pages/afterSales/apply/index.wxml-->
+<import src="../../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+
+<view class='order_item'>
+      <view class='item_con'>
+            <view class='item_con_l'>
+                  <image src="{{data.spuPic||data.detailSpu.spuPic}}"></image>
+            </view>
+            <view class='item_con_r'>
+                  <view class='item_con_r_top'>
+                        <text>{{data.spuName||data.detailSpu.spuName}}</text>
+                  </view>
+                  <view class='item_con_r_cen'>
+                        <text class='item_con_r_cen_has'>已选：{{data.skuName||data.ordSkuName}}</text>
+                        <text>数量：{{data.ordNum||data.ordSkuNum}}</text>
+                  </view>
+            </view>
+      </view>
+</view>
+
+<view class="refundType" wx:if="{{!showDetail}}">
+  <view class="item" bindtap="chooseType" id="onlyMoney">
+    <view>仅退款</view>
+    <view>未收到货（包含未签收），或商家协商同意前提下</view>
+    <image src="../../../assets/arrow-forward.png" mode='widthFix' alt=""></image> 
+  </view>
+  <view class="item" bindtap="chooseType" id="goodAndMoney">
+    <view>退货退款</view>
+    <view>已收到货，需要退换已收到的货物</view>
+    <image src="../../../assets/arrow-forward.png"  mode='widthFix' alt=""></image> 
+  </view>
+</view>
+<view wx:if="{{showDetail}}">
+  <view class='reaso_wrap'>
+    <view class='reason' wx:if="{{onlyMoney}}">
+        <text>货物状态</text>
+        <picker class='fr' bindchange="bindGoodChange" id="goodIndex" value="{{goodIndex}}" range-key="value" range="{{options1}}">
+          <view class="picker">
+            <text wx:if="{{goodIndex==null}}">请选择</text>{{options1[goodIndex].value}}
+          </view>
+        </picker>
+    </view>
+    <view class='reason'>
+        <text>退款原因</text>
+        <picker class='fr' bindchange="bindGoodChange" id="reasonIndex" value="{{reasonIndex}}" range-key="keyValue" range="{{options2}}">
+          <view class="picker" wx:if="{{showReason}}">
+            <text wx:if="{{reasonIndex==null}}">请选择</text>{{options2[reasonIndex].keyValue}}
+          </view>
+        </picker>
+    </view>
+    <view class='reason'>
+        <text>退款数量</text>
+        <picker class='fr' bindchange="bindGoodChange" id="numIndex" value="{{numIndex}}"  range="{{numArray}}">
+          <view class="picker" style='padding-right:16rpx;'>
+            <text wx:if="{{numIndex==null}}">请选择</text>{{numArray[numIndex]}}
+          </view>
+        </picker>
+    </view>
+    <view class='reason'>
+        <text>退款金额</text>
+        <view class='fr'><input type="digit" placeholder="输入退款金额" bindinput="getRefundMoney" value="{{totalMoney}}" /></view>
+    </view>
+  </view>
+
+  <view class="sum_price">
+      最多 ¥ {{(data.ordNum||data.ordSkuNum)*(data.unitPrice||data.ordPromotion)}}，不含发货运费
+  </view>
+
+  <view class='explain'>
+    <view class='explain_title'>退款说明：<text>（选填）</text></view>
+    <textarea value="{{explain}}" placeholder="请在此描述问题" placeholder-class="textarea_ph" class='textarea' bindinput='textareaInput'></textarea>
+  </view>
+
+  <button class="handin" bindtap='apply'>提交</button>
+</view>

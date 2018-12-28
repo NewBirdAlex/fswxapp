@@ -1,0 +1,7 @@
+@import "../../template/productItem.wxss";
+
+.nothing {
+	margin: 50rpx auto;
+	font-size: 30rpx;
+	color: #4e4e4e;
+}

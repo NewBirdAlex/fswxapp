@@ -1,0 +1,176 @@
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
+<view class="container">
+      <view class="btn-add-address" bindtap='goAddress' data-type='1' wx:if="{{!chosenAddress}}">
+            <view>
+                  <image src="/assets/ic_72_add@2x.png" class='icon-add' />手动添加收货地址</view>
+            <view>
+                  <image src="/assets/ic_88_back_normal_b@2x.png" class='arrow-right' />
+            </view>
+      </view>
+      <view class="user-address" bindtap='goAddress' data-type='2' wx:if="{{chosenAddress}}">
+            <view class="user-address-l">
+                  <view>
+                        <image class="address-img" src="/assets/ic_72_location@2x.png"></image>
+                  </view>
+                  <view>
+                        <view class="user-name">{{chosenAddress.userName}}
+                              <text class="user-tel">{{chosenAddress.telNumber}}</text>
+                        </view>
+                        <view class="detail-address">{{chosenAddress.provinceName}}{{chosenAddress.cityName}}{{chosenAddress.countyName}}{{chosenAddress.detailInfo}}</view>
+                  </view>
+            </view>
+            <view>
+                  <image src="/assets/ic_88_back_normal_b@2x.png" class='arrow-right' />
+            </view>
+      </view>
+      <view class="cart-list">
+            <view class="cart-list-item" wx:for="{{chooseCartData}}" wx:key="index">
+                  <view class="cart-list-item-r">
+                        <view class="cart-list-item-r-l" data-spuid="{{item.skuSpuId}}" bindtap="goToDetail">
+                              <image src="{{item.spuPic}}" style='opacity: {{item.skuShowNum==0||item.spuShelvesStatus==0?"0.3":"1"}}'></image>
+                              <text class="sale_out" wx:if="{{item.spuShelvesStatus==1&&item.skuShowNum==0}}">已售罄</text>
+                              <text class="sale_out" wx:if="{{item.spuShelvesStatus==0}}">已下架</text>
+                        </view>
+                        <view class="cart-list-item-r-r">
+                              <view class="cart-list-item-r-r-n">
+                                    <text data-spuid="{{item.skuSpuId}}" bindtap="goToDetail">{{item.spuName}}</text>
+                                    <view class="cart-list-item-r-r-sku">已选：{{item.skuName}}</view>
+                              </view>
+                              <view class="cart-list-item-r-r-p">
+                                    <view class="cart-list-item-r-r-p-l" wx:if="{{item.skuPromotionPrice!=item.skuSalePrice}}">
+                                          ￥{{item.skuPromotionPrice}}
+                                          <text>￥{{item.skuSalePrice}}</text>
+                                    </view>
+                                    <view class="cart-list-item-r-r-p-l" wx:elif="{{item.skuPromotionPrice==item.skuSalePrice&&item.skuSalePrice!=item.skuMarketSalePrice&&item.skuMarketSalePrice!=0}}">
+                                          ￥{{item.skuPromotionPrice}}
+                                          <text>￥{{item.skuMarketSalePrice}}</text>
+                                    </view>
+                                    <view class="cart-list-item-r-r-p-l" wx:else>
+                                          ￥{{item.skuPromotionPrice}}
+                                    </view>
+                                    <view class="cart-list-item-r-r-p-n">
+                                          x{{item.orcNumber}}
+                                    </view>
+                              </view>
+                        </view>
+                  </view>
+            </view>
+      </view>
+      <view class="options">
+            <view class="weui-cells weui-cells_after-title">
+                  <view class="weui-cell">
+                        <view class="weui-cell__bd">运费</view>
+                        <view class="weui-cell__ft">￥{{orderFreight}}</view>
+                  </view>
+                  <view class="weui-cell">
+                        <view class="weui-cell__bd">配送方式</view>
+                        <view class="weui-cell__ft">快递</view>
+                  </view>
+                  <view  class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="openCard">
+                        <view class="weui-cell__bd">店铺优惠</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access">￥{{!chosenConpouPrice?"0.00":chosenConpouPrice.showMkcPrice}}</view>
+                  </view>
+                  <view  class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="opengiftCard" wx:if="{{!giftCardList||giftCardList.length==0}}">
+                        <view class="weui-cell__bd">礼品卡</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access">请选择</view>
+                  </view>
+                  <view  class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="opengiftCard" wx:else>
+                        <view class="weui-cell__bd">礼品卡</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access">已抵扣{{totalBalancePrice}}</view>
+                  </view>
+                  <view class="weui-cell">
+                        <view class="weui-cell__hd">
+                              <view class="weui-label">买家留言：</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                              <input class="" placeholder="有什么想对商家说的可以写在这里哦~"  bindinput="bindKeyMsg" bindfocus="msgTracker"/>
+                        </view>
+                  </view>
+            </view>
+      </view>
+	<view class="order-price">
+		<view class="weui-cells weui-cells_after-title">
+                  <view class="weui-cell">
+                        <view class="weui-cell__bd">商品总价</view>
+                        <view class="weui-cell__ft">￥{{sumPrice}}</view>
+                  </view>
+                  <view class="weui-cell">
+                        <view class="weui-cell__bd">运费</view>
+                        <view class="weui-cell__ft">￥{{orderFreight}}</view>
+                  </view>
+                  <view class="weui-cell">
+                        <view class="weui-cell__bd">优惠券</view>
+                        <view class="weui-cell__ft">￥-{{!chosenConpouPrice?"0.00":chosenConpouPrice.showMkcPrice}}</view>
+                  </view>
+                  <view class="weui-cell">
+                        <view class="weui-cell__bd">立减</view>
+                        <view class="weui-cell__ft">￥-{{totalDiscount+promotionSum==0?'0.00':totalDiscount+promotionSum}}</view>
+                  </view>
+                  <view class="weui-cell">
+                        <view class="weui-cell__bd">礼品卡</view>
+                        <view class="weui-cell__ft">￥-{{totalBalancePrice}}</view>
+                  </view>
+			<view class="weui-cell order-price-sum">
+				<view class="weui-cell__bd">共{{totalGoodsNum}}件商品 合计：￥{{totalPrice<0?"0.00":totalPrice}}</view>
+			</view>
+            </view>
+	</view>
+      <view class="actions">
+            <view class="actions-l">
+                  <view class="actions-l-sum">实付款：
+                        <text>￥{{totalPrice<0?"0.00":totalPrice}}</text>
+                  </view>
+                  <!-- <view class="actions-l-dis">立减￥
+                        <text>{{discountPrice}}</text>
+                  </view> -->
+            </view>
+            <view class="actions-r">
+                  <button formType="submit" bindtap="goTopay">结算</button>
+            </view>
+      </view>
+</view>
+
+
+<view class="authorization" wx:if="{{authorizationInput||authorizationWhy||authorizationList}}">
+	<view class="authorization_mask" bindtap="closeAllAuth"></view>
+	<view class="authorization-input" wx:if="{{authorizationInput}}">
+		<view class="authorization-title">实名认证</view>
+		<view class="authorization-con">
+			<view class="auth-con-name">根据海关要求，购买跨境商品需要提供实名信息。 <image src="/assets/why-auth.png" data-sign="input" bindtap="whyToAuth"></image></view>
+			<view class="auth-con-input">
+				<input placeholder="您的真实姓名" focus="true" bindinput="bindKeyName" bindfocus="nameTracker"></input>
+				<input placeholder="您的身份证号码（将加密处理）" type="idcard" maxlength='18'  bindinput="bindKeyIDCard" bindfocus="IDCardTracker"></input>
+			</view>
+		</view>
+		<view class="authorization-btn" bindtap="addRealName">确认</view>
+	</view>
+	<view class="authorization-input" wx:if="{{authorizationWhy}}">
+		<view class="authorization-title">为什么需要实名认证？</view>
+		<view class="authorization--why-con">
+			<view><label>•</label> <text>根据海关要求，购买跨境商品需要对订购人进行实名认    证，错误信息可能导致无法正常清关。</text></view>
+			<view><label>•</label> <text>您的身份证信息将被加密保管，保证信息安全，仅用于海关清关，均不对外泄露。</text></view>
+			<view><label>•</label> <text>任何身份认证相关问题可联系我们咨询：</text></view>
+			<view class="authorization--why-number">400-9020-188（9:30-22:00）</view>
+		</view>
+		<view class="authorization-btn" bindtap="closeWhyAuth">我知道了</view>
+	</view>
+	<view class="authorization-input" wx:if="{{authorizationList}}">
+		<view class="authorization-title">实名认证</view>
+		<view class="authorization-con">
+			<view class="auth-con-name">根据海关要求，购买跨境商品需要提供实名信息。 <image src="/assets/why-auth.png" data-sign="list" bindtap="whyToAuth"></image></view>
+			<view class="auth-con-list">
+				<view class="auth-con-list-item" wx:for="{{authorizationListData}}" data-mrnid="{{item.mrnId}}" data-index="{{index}}" bindtap="chooseRealName">
+					<view class="auth-con-list-item-l">
+						<image src="{{item.active?'/assets/Check_selected@2x.png':'/assets/Check_normal@2x.png'}}"></image>
+						<text>{{item.mrnName}}</text>
+					</view>
+					<view class="auth-con-list-item-r">
+						<text>{{item.mrnIdentity}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="authorization-btn" bindtap="payNow">确认</view>
+	</view>
+</view>

@@ -1,0 +1,26 @@
+ @import "../template/horizontalItems.wxss";
+ .subject{
+  width: 100%;
+}
+.subject-top {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+}
+.subject-top-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} 
+.subject-top-arrow{
+  position: absolute;
+  width: 50rpx;
+  height: 21rpx;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%)
+}
+

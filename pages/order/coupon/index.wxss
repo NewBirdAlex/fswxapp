@@ -1,0 +1,151 @@
+.tab{
+  height:71rpx;
+  margin-top:20rpx;
+  margin-left:20rpx;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.tab-one{
+width:33%;
+height:50rpx;
+  line-height:50rpx;
+font-size: 24rpx;
+color:#04c5b4;
+text-align: center;
+border:1rpx solid #04c5b4;
+}
+.tab-one:nth-child(1){
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.tab-one:nth-child(3){
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+
+.choosed{
+  height:50rpx;
+  line-height:50rpx;
+width:33%;
+font-size: 24rpx;
+text-align: center;
+border:1rpx solid #04c5b4;
+background-color:#04c5b4;
+color:#fff;
+}
+.choosed:nth-child(1){
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.choosed:nth-child(3){
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.contain {
+  margin: 20rpx 20rpx 0 20rpx;
+  display: flex;
+  flex-direction: row;
+  border-top: 1rpx solid #ececec;
+  border-right: 1rpx solid #ececec;
+  border-bottom: 1rpx solid #ececec;
+}
+
+.coup-img {
+  width: 200rpx;
+  height: 180rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.coup-draw {
+  width: 200rpx;
+  height: 180rpx;
+  display: block;
+}
+
+.top-word {
+  font-size: 24rpx;
+  color: #4a4a4a;
+}
+
+.top-time {
+  font-size: 18rpx;
+  color: #9b9b9b;
+  margin-top: 5rpx;
+}
+
+.top-info {
+  font-size: 18rpx;
+  color: #4a4a4a;
+}
+
+.arrow {
+  width: 18rpx;
+  height: 12rpx;
+  margin-left: 10rpx;
+}
+
+.top-user {
+  width: 102rpx;
+  height: 34rpx;
+  font-size: 18rpx;
+  color: #f93473;
+  border: 1rpx solid #f93473;
+  line-height: 34rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  position: absolute;
+  right: 40rpx;
+}
+
+.last-all {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+}
+
+.coup-right {
+  width: 70%;
+  padding: 20rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.yuan {
+  font-size: 60rpx;
+  position: absolute;
+  z-index: 20;
+  color: #fff;
+}
+
+.icon {
+  font-size: 30rpx;
+}
+
+.bottom-des {
+  margin-left: 26rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  font-size: 22rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border: 1rpx solid #ececec;
+ box-shadow:-1rpx 5rpx 10rpx 0rpx #ececec inset;
+}
+
+.over {
+  font-size: 24rpx;
+
+}
+.use{
+  width:115rpx;
+  height:115rpx;
+float: right;
+}
